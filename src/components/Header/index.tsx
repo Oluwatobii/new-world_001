@@ -6,8 +6,6 @@ import MobileNavigation from './components/MobileNavigation'
 export default function Header() {
   const isTabletSize = useMediaQuery('(max-width: 62em)')
 
-  console.log({ isTabletSize })
-
   return (
     <Box
       sx={theme => ({
