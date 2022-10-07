@@ -25,7 +25,7 @@ export default function index() {
       })}
     >
       <LeftSection />
-      {/* <RightSection /> */}
+      <RightSection />
     </SimpleGrid>
   )
 }
