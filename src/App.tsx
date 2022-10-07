@@ -1,6 +1,7 @@
 import './App.css'
 import Header from '../src/components/Header'
 import Introduction from './components/Introduction'
+import Stats from './components/Stats'
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 
@@ -28,6 +29,7 @@ function App() {
       >
         <Header />
         <Introduction />
+        <Stats />
       </MantineProvider>
     </ColorSchemeProvider>
   )

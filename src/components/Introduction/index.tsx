@@ -12,9 +12,20 @@ export default function index() {
         { maxWidth: 'sm', cols: 1, spacing: 'sm' },
         { maxWidth: 'xs', cols: 1, spacing: 'sm' }
       ]}
+      sx={theme => ({
+        [theme.fn.smallerThan('lg')]: {
+          height: '50vh'
+        },
+        [theme.fn.smallerThan('md')]: {
+          height: '40vh'
+        },
+        [theme.fn.smallerThan('sm')]: {
+          height: '85vh'
+        }
+      })}
     >
       <LeftSection />
-      <RightSection />
+      {/* <RightSection /> */}
     </SimpleGrid>
   )
 }
