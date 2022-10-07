@@ -19,7 +19,7 @@ interface ToogleProps {
 
 const useStyles = createStyles(theme => ({
   iconWrapper: {
-    color: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941'
+    color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
   }
 }))
 
@@ -35,7 +35,7 @@ export default function ColorSchemeToggle({ IconSize = 16, TextMargin = 10, Text
           onClick={() => toggleColorScheme()}
           size={IconSize}
           sx={theme => ({
-            color: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941'
+            color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
           })}
         >
           {colorScheme === 'dark' ? <IconSun size={IconSize} /> : <IconMoonStars size={IconSize} />}
