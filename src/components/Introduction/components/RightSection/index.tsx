@@ -21,12 +21,12 @@ export default function RightSection() {
     <Center
       className={classes.container}
       sx={theme => ({
-        [theme.fn.smallerThan('lg')]: {
-          width: '600px'
+        [theme.fn.smallerThan('md')]: {
+          height: '0vh'
         },
         [theme.fn.smallerThan('sm')]: {
-          width: '350px',
-          height: '300px'
+          height: '45vh',
+          width: '100vw'
         }
       })}
     >

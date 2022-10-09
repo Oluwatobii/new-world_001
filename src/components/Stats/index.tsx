@@ -31,6 +31,11 @@ export default function index() {
         { maxWidth: 'sm', cols: 1, spacing: 'sm' },
         { maxWidth: 'xs', cols: 1, spacing: 'sm' }
       ]}
+      sx={theme => ({
+        [theme.fn.smallerThan('xs')]: {
+          marginTop: '12rem'
+        }
+      })}
     >
       {stats.map(stat => (
         <div className={classes.container} key={`${id}-${stat.subject}`}>

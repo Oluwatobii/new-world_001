@@ -1,8 +1,11 @@
 import { SimpleGrid } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import LeftSection from './components/LeftSection'
 import RightSection from './components/RightSection'
 
 export default function index() {
+  const isTabletSize = useMediaQuery('(max-width: 62em)')
+
   return (
     <SimpleGrid
       cols={2}
@@ -12,20 +15,9 @@ export default function index() {
         { maxWidth: 'sm', cols: 1, spacing: 'sm' },
         { maxWidth: 'xs', cols: 1, spacing: 'sm' }
       ]}
-      sx={theme => ({
-        [theme.fn.smallerThan('lg')]: {
-          height: '50vh'
-        },
-        [theme.fn.smallerThan('md')]: {
-          height: '40vh'
-        },
-        [theme.fn.smallerThan('sm')]: {
-          height: '85vh'
-        }
-      })}
     >
       <LeftSection />
-      <RightSection />
+      {!isTabletSize ? <RightSection /> : null}
     </SimpleGrid>
   )
 }

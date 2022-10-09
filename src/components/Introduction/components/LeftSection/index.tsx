@@ -66,8 +66,8 @@ export default function LeftSection() {
             marginTop: '35px'
           })}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.
+          Excellent at working well with others while holding myself accountable and can also navigate the dynamics of
+          the toughest teams.
         </Text>
         <Group
           sx={() => ({

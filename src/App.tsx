@@ -2,6 +2,10 @@ import './App.css'
 import Header from '../src/components/Header'
 import Introduction from './components/Introduction'
 import Stats from './components/Stats'
+import Competencies from './components/Competencies'
+import AboutMe from './components/AboutMe'
+import Portfolio from './components/Portfolio'
+import Resume from './components/Resume'
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 
@@ -30,6 +34,10 @@ function App() {
         <Header />
         <Introduction />
         <Stats />
+        <Competencies />
+        <AboutMe />
+        <Portfolio />
+        <Resume />
       </MantineProvider>
     </ColorSchemeProvider>
   )
