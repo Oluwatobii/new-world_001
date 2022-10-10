@@ -1,7 +1,7 @@
 import { createStyles, Header, Group } from '@mantine/core'
 import ColorSchemeToggle from '../ColorSchemeToggle'
 import Logo from '../../../../assets/svgs/Logo'
-import menuList from '../menuList.json'
+import { menuList } from '../../../Global/menuList'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -47,7 +47,7 @@ export default function Navigation() {
         </Group>
 
         <Group sx={{ height: '100%' }} spacing={0}>
-          {menuList.map(menu => (
+          {menuList.menu.map(menu => (
             <a key={menu.href} className={classes.link}>
               {menu.name}
             </a>

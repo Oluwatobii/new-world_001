@@ -6,6 +6,8 @@ import Competencies from './components/Competencies'
 import AboutMe from './components/AboutMe'
 import Portfolio from './components/Portfolio'
 import Resume from './components/Resume'
+import GetInTouch from './components/GetInTouch'
+import Footer from './components/Footer'
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 
@@ -38,6 +40,8 @@ function App() {
         <AboutMe />
         <Portfolio />
         <Resume />
+        <GetInTouch />
+        <Footer />
       </MantineProvider>
     </ColorSchemeProvider>
   )

@@ -2,7 +2,7 @@ import { createStyles, Group, Divider, Burger, Drawer, ScrollArea } from '@manti
 import { useDisclosure } from '@mantine/hooks'
 import Logo from '../../../../assets/svgs/Logo'
 import ColorSchemeToggle from '../ColorSchemeToggle'
-import menuList from '../menuList.json'
+import { menuList } from '../../../Global/menuList'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -51,7 +51,7 @@ export default function MobileNavigation() {
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-          {menuList.map(menu => (
+          {menuList.menu.map(menu => (
             <a key={menu.href} className={classes.link}>
               {menu.name}
             </a>

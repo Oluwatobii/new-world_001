@@ -45,7 +45,10 @@ export default function RightSection() {
       align="flex-start"
       spacing="xl"
       sx={theme => ({
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff'
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
+        [theme.fn.smallerThan('xs')]: {
+          top: 60
+        }
       })}
     >
       <Box

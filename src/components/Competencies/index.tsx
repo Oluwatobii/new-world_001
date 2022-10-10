@@ -39,12 +39,27 @@ export default function index() {
   const { colorScheme } = useMantineColorScheme()
 
   const iconColor = colorScheme === 'dark' ? 'brand.0' : 'brand.1'
-  const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
+
   return (
-    <Container size="lg" className={classes.wrapper}>
+    <Container
+      size="lg"
+      className={classes.wrapper}
+      sx={theme => ({
+        [theme.fn.smallerThan('md')]: {
+          height: '68rem'
+        },
+        [theme.fn.smallerThan('sm')]: {
+          height: '90rem'
+        },
+        [theme.fn.smallerThan('xs')]: {
+          height: '50rem'
+        }
+      })}
+    >
       <Text
         className={classes.text}
         sx={theme => ({
+          fontWeight: 800,
           color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
         })}
       >
