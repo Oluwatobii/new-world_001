@@ -39,7 +39,19 @@ const useStyles = createStyles(theme => ({
       borderRadius: '4px',
       backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941',
       bottom: 0,
-      left: 470
+      left: 470,
+      [theme.fn.smallerThan('md')]: {
+        left: 290,
+        width: '25%'
+      },
+      [theme.fn.smallerThan('sm')]: {
+        left: 220,
+        width: '30%'
+      },
+      [theme.fn.smallerThan('xs')]: {
+        left: 80,
+        width: '50%'
+      }
     }
   },
 
