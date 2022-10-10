@@ -70,7 +70,13 @@ export default function index() {
     <Carousel.Slide key={item.title}>
       <CustomCard
         title={item.title}
-        Button={<CustomButton text="Launch" textColor={buttonTextColor} />}
+        Button={
+          <CustomButton
+            text="Launch"
+            textColor={buttonTextColor}
+            options={{ onClick: () => window.open(item.url, '_blank') }}
+          />
+        }
         image={item.image}
         imageOverLayColor={item.imageOverLayColor}
         height={'400px'}

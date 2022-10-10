@@ -88,7 +88,13 @@ export default function index() {
               }
             })}
           >
-            <CustomButton text="Download" textColor={buttonTextColor} />
+            <CustomButton
+              text="Download"
+              textColor={buttonTextColor}
+              options={{
+                onClick: () => window.open('https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf', '_blank')
+              }}
+            />
           </Box>
         </Container>
       </BackgroundImage>

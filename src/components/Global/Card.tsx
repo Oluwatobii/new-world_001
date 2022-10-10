@@ -44,7 +44,7 @@ const useStyles = createStyles(theme => ({
   footer: {
     position: 'absolute',
     top: '370px',
-    left: '105px',
+    left: '35%',
     zIndex: 100
   }
 }))
