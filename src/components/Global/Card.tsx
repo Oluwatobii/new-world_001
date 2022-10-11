@@ -43,7 +43,7 @@ const useStyles = createStyles(theme => ({
 
   footer: {
     position: 'absolute',
-    top: '370px',
+    top: '408px',
     left: '35%',
     zIndex: 100
   }
@@ -80,7 +80,7 @@ export default function CustomCard({
   const textColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
   return (
-    <Box>
+    <>
       <Card
         withBorder
         radius="md"
@@ -121,7 +121,8 @@ export default function CustomCard({
                 }
               }
               return {
-                marginTop: Icon ? '55px' : '0px'
+                marginTop: Icon ? '55px' : '0px',
+                textAlign: 'center'
               }
             }}
           >
@@ -157,14 +158,15 @@ export default function CustomCard({
             className={classes.text}
             lineClamp={4}
             sx={() => ({
-              marginTop: Icon ? '20px' : '0px'
+              marginTop: Icon ? '20px' : '0px',
+              textAlign: 'justify'
             })}
           >
             {description}
           </Text>
         </Card.Section>
-        {Button ? <Box className={classes.footer}>{Button}</Box> : null}
       </Card>
-    </Box>
+      {Button ? <Box className={classes.footer}>{Button}</Box> : null}
+    </>
   )
 }

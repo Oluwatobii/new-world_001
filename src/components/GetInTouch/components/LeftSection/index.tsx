@@ -1,4 +1,4 @@
-import { createStyles, SimpleGrid, Stack, Title, Text, Box, Group, useMantineColorScheme } from '@mantine/core'
+import { createStyles, SimpleGrid, Stack, Title, Text, Box } from '@mantine/core'
 import CustomIcon from '../../../Global/Icon'
 import { GoLocation } from 'react-icons/go'
 import { AiOutlineMail } from 'react-icons/ai'
@@ -35,6 +35,7 @@ export default function LeftSection() {
       <Box
         sx={theme => ({
           padding: '3.5rem',
+          marginTop: '25px',
           color: theme.colorScheme === 'dark' ? theme.white : theme.black
         })}
       >
@@ -52,22 +53,11 @@ export default function LeftSection() {
           Stay Connected & Let's Get In Touch
         </Title>
 
-        <Text
-          className={classes.text}
-          size="md"
-          sx={() => ({
-            marginTop: '35px'
-          })}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit architecto fuga officia natus repellat deleniti
-          nesciunt aperiam recusandae magni quaerat praesentium pariatur maiores tenetur inventore doloremque nam,
-          incidunt voluptates quae.
-        </Text>
-
         <SimpleGrid
           cols={2}
           sx={() => ({
-            marginTop: '35px'
+            marginTop: '35px',
+            textAlign: 'center'
           })}
         >
           <CustomIcon Icon={<GoLocation size={'45px'} />} title="My Location" text="Ontario, Canada" />

@@ -60,6 +60,7 @@ export default function index() {
         className={classes.text}
         sx={theme => ({
           fontWeight: 800,
+          textAlign: 'center',
           color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
         })}
       >
@@ -68,12 +69,6 @@ export default function index() {
       <Title align="center" className={classes.title}>
         Top Services
       </Title>
-
-      <Text className={classes.text}>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint itaque suscipit labore perspiciatis minima quod,
-        dolor error voluptate officia sequi omnis architecto, eaque maxime quam sunt assumenda voluptates natus
-        delectus?
-      </Text>
 
       <SimpleGrid
         cols={3}

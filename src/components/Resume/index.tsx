@@ -1,4 +1,4 @@
-import { BackgroundImage, Text, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
+import { BackgroundImage, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
 import CustomButton from '../Global/Button'
 import resumePath from '../../assets/images/resume-backgnd.png'
 
@@ -26,12 +26,21 @@ const useStyles = createStyles(theme => ({
       left: '1rem',
       top: '5.85rem',
       background: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
-      width: '98.3%',
-      height: '80.5%',
+      width: '98.1%',
+      height: '76.3%',
       opacity: 0.59,
+
+      [theme.fn.smallerThan('lg')]: {
+        width: '97.3%',
+        height: '76%'
+      },
+      [theme.fn.smallerThan('md')]: {
+        width: '96%',
+        height: '76%'
+      },
       [theme.fn.smallerThan('xs')]: {
         width: '91.3%',
-        height: '83.5%'
+        height: '77.7%'
       }
     }
   }
@@ -49,7 +58,6 @@ export default function index() {
           size="sm"
           sx={theme => ({
             marginTop: '3rem',
-            zIndex: 100,
             paddingLeft: theme.spacing.md,
             paddingRight: theme.spacing.md,
             paddingTop: theme.spacing.xl * 2,
@@ -60,23 +68,12 @@ export default function index() {
             align="center"
             sx={() => ({
               marginTop: '3rem',
-              color: 'black'
-            })}
-          >
-            DOWNLOAD MY RESUME
-          </Title>
-
-          <Text
-            sx={() => ({
-              marginTop: '3rem',
               color: 'black',
-              textSize: 600
+              fontWeight: 700
             })}
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, id voluptas quas veritatis enim modi
-            eveniet recusandae fugiat accusamus quaerat quasi labore deleniti doloribus voluptates molestias aperiam.
-            Enim, nemo libero.
-          </Text>
+            DOWNLOAD MY RESUME!
+          </Title>
 
           <Box
             sx={theme => ({

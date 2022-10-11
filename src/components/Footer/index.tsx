@@ -78,7 +78,7 @@ const useStyles = createStyles(theme => ({
   },
 
   afterFooter: {
-    color: theme.colorScheme === 'dark' ? theme.colors.white[0] : theme.colors.dark,
+    color: theme.colorScheme === 'dark' ? theme.colors.dark : theme.colors.white[0],
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
     display: 'flex',
     justifyContent: 'center',

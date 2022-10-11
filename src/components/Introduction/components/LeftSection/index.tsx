@@ -129,6 +129,9 @@ export default function LeftSection() {
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
         height: 400,
         marginTop: '65px',
+        [theme.fn.smallerThan('md')]: {
+          marginTop: '-35px'
+        },
         [theme.fn.smallerThan('sm')]: {
           marginTop: '-35px'
         }

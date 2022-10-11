@@ -12,6 +12,14 @@ import { useForm } from '@mantine/form'
 import { useMediaQuery } from '@mantine/hooks'
 import CustomButton from '../../../Global/Button'
 
+interface ValuesProps {
+  firstName: string
+  lastName: string
+  email: string
+  subject: string
+  message: string
+}
+
 const useStyles = createStyles(theme => ({
   wrapper: {
     marginTop: '95px',
@@ -45,8 +53,13 @@ export default function RightSection() {
     }
   })
 
+  const handleSubmit = (values: ValuesProps) => {
+    /** Make a Post request to Houston */
+    form.reset()
+  }
+
   return (
-    <form onSubmit={form.onSubmit(() => {})}>
+    <form onSubmit={form.onSubmit(values => handleSubmit(values))}>
       <Container className={classes.wrapper}>
         {isTabletSize ? (
           <Title
@@ -70,7 +83,7 @@ export default function RightSection() {
             size="lg"
             variant="filled"
             required
-            {...form.getInputProps('firstname')}
+            {...form.getInputProps('firstName')}
           />
           <TextInput
             label="Last Name"
@@ -119,7 +132,13 @@ export default function RightSection() {
         />
 
         <Group position="left" mt="xl">
-          <CustomButton text="Send Message" size="lg" buttonColor={buttonColor} textColor={textColor} />
+          <CustomButton
+            text="Send Message"
+            size="lg"
+            buttonColor={buttonColor}
+            textColor={textColor}
+            options={{ type: 'submit' }}
+          />
         </Group>
       </Container>
     </form>

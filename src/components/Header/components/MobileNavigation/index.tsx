@@ -47,7 +47,7 @@ export default function MobileNavigation() {
         </Group>
       </Group>
 
-      <Drawer opened={drawerOpened} onClose={closeDrawer} size="100%" padding="md" title="Menu" zIndex={1000000}>
+      <Drawer opened={drawerOpened} onClose={closeDrawer} size="100%" padding="md" title="Menu" zIndex={1000}>
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
