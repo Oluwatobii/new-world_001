@@ -33,8 +33,8 @@ const useStyles = createStyles(theme => ({
       marginLeft: '25%'
     },
     [theme.fn.smallerThan('md')]: {
-      marginTop: '45px',
-      marginLeft: '24%'
+      marginTop: '30px',
+      marginLeft: '25%'
     },
     [theme.fn.smallerThan('sm')]: {
       marginTop: '45px',
@@ -45,11 +45,11 @@ const useStyles = createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
     position: 'absolute',
     width: '100%',
+    height: '30px',
     overflow: 'hidden',
     top: '115%',
     left: '27%',
     textAlign: 'initial',
-    maxHeight: '40px',
     opacity: 1,
     fontWeight: 'bold',
     [theme.fn.smallerThan('xl')]: {
@@ -58,59 +58,18 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-const intrestsOne = keyframes({
+const slide = keyframes({
   '0%': {
-    opacity: 0
+    top: 0
   },
-  '10%': {
-    opacity: 1
-  },
-  '20%': {
-    opacity: 0
-  }
-})
-const intrestsTwo = keyframes({
-  '20%': {
-    opacity: 0
-  },
-  '30%': {
-    opacity: 1
-  },
-  '40%': {
-    opacity: 0
-  }
-})
-const intrestsThree = keyframes({
-  '40%': {
-    opacity: 0
+  '25%': {
+    top: '-40px'
   },
   '50%': {
-    opacity: 1
+    top: '-80px'
   },
-  '60%': {
-    opacity: 0
-  }
-})
-const intrestsFour = keyframes({
-  '60%': {
-    opacity: 0
-  },
-  '70%': {
-    opacity: 1
-  },
-  '80%': {
-    opacity: 0
-  }
-})
-const intrestsFive = keyframes({
-  '80%': {
-    opacity: 0
-  },
-  '90%': {
-    opacity: 1
-  },
-  '100%': {
-    opacity: 0
+  '75%': {
+    top: '-120px'
   }
 })
 
@@ -151,7 +110,7 @@ export default function LeftSection() {
             marginLeft: '6px',
             color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
             [theme.fn.smallerThan('md')]: {
-              marginLeft: 0
+              marginLeft: '5px'
             },
             [theme.fn.smallerThan('sm')]: {
               marginLeft: 0
@@ -165,53 +124,32 @@ export default function LeftSection() {
             Oluwatobi A. Bello
           </Title>
           <div className={classes.intrests}>
-            <Title
-              order={2}
-              sx={() => ({
-                animation: `${intrestsOne} 15s infinite`
+            <Box
+              sx={theme => ({
+                position: 'absolute',
+                top: 0,
+                marginLeft: '1%',
+                fontSize: '25px',
+                animation: `${slide} 9s infinite`
               })}
             >
               WEB DEVELOPER.
-            </Title>
-            <Title
-              order={2}
-              sx={() => ({
-                animation: `${intrestsTwo} 15s infinite`
-              })}
-            >
+              <br />
               MECH. ENGR.
-            </Title>
-            <Title
-              order={2}
-              sx={() => ({
-                animation: `${intrestsThree} 15s infinite`
-              })}
-            >
-              MANCHESTER UNITED FAN.
-            </Title>
-            <Title
-              order={2}
-              sx={() => ({
-                animation: `${intrestsFour} 15s infinite`
-              })}
-            >
+              <br />
+              MAN UNITED FAN.
+              <br />
               CAR ENTHUSIAT.
-            </Title>
-            <Title
-              order={2}
-              sx={() => ({
-                animation: `${intrestsFive} 15s infinite`
-              })}
-            >
-              LOREM IPSUM.
-            </Title>
+            </Box>
           </div>
         </div>
         <Text
           className={classes.text}
           size="md"
           sx={() => ({
-            marginTop: '30px'
+            marginTop: '30px',
+            textAlign: 'initial',
+            width: '85%'
           })}
         >
           Excellent at working well with others while holding myself accountable and can also navigate the dynamics of
