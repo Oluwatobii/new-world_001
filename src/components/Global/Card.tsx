@@ -42,10 +42,10 @@ const useStyles = createStyles(theme => ({
   },
 
   footer: {
-    position: 'absolute',
-    top: '408px',
-    left: '35%',
-    zIndex: 100
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-28px'
   }
 }))
 

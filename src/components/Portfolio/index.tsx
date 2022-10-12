@@ -104,6 +104,7 @@ export default function index() {
         slidesToScroll={isTabletSize ? 1 : 2}
         nextControlIcon={<GrNext size={30} />}
         previousControlIcon={<GrPrevious size={30} />}
+        styles={{ viewport: { overflow: 'unset', overflowX: 'clip' } }}
       >
         {slides}
       </Carousel>
