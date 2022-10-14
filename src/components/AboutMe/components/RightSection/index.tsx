@@ -42,12 +42,24 @@ export default function RightSection() {
 
   return (
     <Stack
-      align="flex-start"
-      spacing="xl"
+      spacing="lg"
       sx={theme => ({
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width: '75%',
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
+        [theme.fn.smallerThan('xl')]: {
+          width: '95%'
+        },
+        [theme.fn.smallerThan('lg')]: {
+          width: '75%'
+        },
+        [theme.fn.smallerThan('md')]: {
+          width: '100%'
+        },
         [theme.fn.smallerThan('xs')]: {
-          top: 60
+          marginTop: '-150px',
+          width: '100%'
         }
       })}
     >
@@ -78,7 +90,8 @@ export default function RightSection() {
           className={classes.text}
           size="md"
           sx={() => ({
-            marginTop: '35px'
+            marginTop: '35px',
+            width: '95%'
           })}
         >
           Over the years I’ve been passionate about different things – both professionally and personally. This probably
@@ -89,11 +102,13 @@ export default function RightSection() {
           className={classes.text}
           size="md"
           sx={() => ({
-            marginTop: '35px'
+            marginTop: '35px',
+            width: '95%'
           })}
         >
           And as a result, i found myself further delving into this new world of programming and software development.
         </Text>
+
         <Group
           sx={() => ({
             padding: '1rem',

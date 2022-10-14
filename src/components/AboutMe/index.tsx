@@ -1,4 +1,4 @@
-import { SimpleGrid } from '@mantine/core'
+import { SimpleGrid, Box } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import LeftSection from './components/LeftSection'
 import RightSection from './components/RightSection'
@@ -21,8 +21,26 @@ export default function index() {
         }
       })}
     >
-      {!isTabletSize ? <LeftSection /> : null}
-      <RightSection />
+      <Box
+        sx={() => ({
+          display: 'flex',
+          justifyContent: 'flex-end',
+          width: '95%',
+          marginTop: '20px'
+        })}
+      >
+        {!isTabletSize ? <LeftSection /> : null}
+      </Box>
+      <Box
+        sx={() => ({
+          display: 'flex',
+          justifyContent: 'flex-start',
+          width: '95%',
+          marginTop: '20px'
+        })}
+      >
+        <RightSection />
+      </Box>
     </SimpleGrid>
   )
 }
