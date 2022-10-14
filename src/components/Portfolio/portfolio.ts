@@ -8,7 +8,7 @@ export const portfolioData = {
     {
       title: 'Tracker',
       image: portfolioFourPath,
-      imageOverLayColor: '#41B4A3',
+      imageOverLayColor: '#2A9BD4',
       url: 'https://tracker.tbello.dev',
       description:
         'The Bug/Project Tracker web application helps in visualizing the progress of projects and potential bugs that are related.'
