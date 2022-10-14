@@ -1,4 +1,4 @@
-import { createStyles, Group, Divider, Burger, Drawer, ScrollArea } from '@mantine/core'
+import { createStyles, Group, Divider, Burger, Drawer, ScrollArea, Box } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import Logo from '../../../../assets/svgs/Logo'
 import ColorSchemeToggle from '../ColorSchemeToggle'
@@ -52,9 +52,11 @@ export default function MobileNavigation() {
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
           {menuList.menu.map(menu => (
-            <a key={menu.href} className={classes.link}>
-              {menu.name}
-            </a>
+            <Box onClick={closeDrawer}>
+              <a key={menu.path} href={menu.path} className={classes.link}>
+                {menu.name}
+              </a>
+            </Box>
           ))}
 
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />

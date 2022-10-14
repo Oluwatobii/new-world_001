@@ -86,7 +86,7 @@ export default function index() {
     </Carousel.Slide>
   ))
   return (
-    <Container size="lg">
+    <Container size="lg" id="portfolio">
       <Title align="center" className={classes.title}>
         Latest Projects
       </Title>

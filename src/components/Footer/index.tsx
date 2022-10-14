@@ -99,12 +99,17 @@ export default function Footer() {
 
   const groups = menuList.groups.map(group => {
     const links = group.links.map((link, index) => (
-      <Text<'a'>
+      <Text
         key={index}
         className={classes.link}
         component="a"
         href={link.link}
-        onClick={event => event.preventDefault()}
+        onClick={event => {
+          if (link.redirect) {
+            event.preventDefault()
+            window.open(link.link, '_blank')
+          }
+        }}
       >
         {link.label}
       </Text>

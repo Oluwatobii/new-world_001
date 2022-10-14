@@ -115,7 +115,9 @@ export default function RightSection() {
             marginTop: '20px'
           })}
         >
-          <CustomButton text="More About Me" textColor={textColor} />
+          <a href="#contact">
+            <CustomButton text="More About Me" textColor={textColor} />
+          </a>
         </Group>
       </Box>
     </Stack>

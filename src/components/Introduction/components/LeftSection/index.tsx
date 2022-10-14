@@ -161,8 +161,12 @@ export default function LeftSection() {
             marginTop: '30px'
           })}
         >
-          <CustomButton text="Come On In" buttonColor={buttonColor} textColor={textColor} />
-          <CustomButton text="About Me" textColor={textColor} />
+          <a href="#stats">
+            <CustomButton text="Come On In" buttonColor={buttonColor} textColor={textColor} />
+          </a>
+          <a href="#about">
+            <CustomButton text="About Me" textColor={textColor} />
+          </a>
         </Group>
       </Box>
     </Stack>

@@ -2,27 +2,27 @@ export const menuList = {
   menu: [
     {
       name: 'Home',
-      href: '/home'
+      path: '#home'
     },
     {
       name: 'Competencies',
-      href: '/competencies'
+      path: '#competencies'
     },
     {
       name: 'About',
-      href: '/about'
+      path: '#about'
     },
     {
       name: 'Portfolio',
-      href: '/portfolio'
+      path: '#portfolio'
     },
     {
       name: 'Resume',
-      href: '/resume'
+      path: '#resume'
     },
     {
       name: 'Contact',
-      href: '/contact'
+      path: '#contact'
     }
   ],
   groups: [
@@ -30,20 +30,16 @@ export const menuList = {
       title: 'Menu',
       links: [
         {
-          link: '/about-me',
+          link: '#about',
           label: 'About Me'
         },
         {
-          link: '/services',
+          link: '#competencies',
           label: 'Services'
         },
         {
-          link: '/portfolio',
+          link: '#portfolio',
           label: 'Portfolio'
-        },
-        {
-          link: '/competencies',
-          label: 'Competencies'
         }
       ]
     },
@@ -51,15 +47,16 @@ export const menuList = {
       title: 'Links',
       links: [
         {
-          link: '#',
+          redirect: true,
+          link: 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf',
           label: 'Resume'
         },
         {
-          link: '#',
+          link: '#portfolio',
           label: 'Projects'
         },
         {
-          link: '#',
+          link: '#contact',
           label: 'Contact Me'
         }
       ]

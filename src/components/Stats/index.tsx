@@ -23,6 +23,7 @@ export default function index() {
 
   return (
     <SimpleGrid
+      id="stats"
       cols={3}
       spacing="lg"
       className={classes.main}

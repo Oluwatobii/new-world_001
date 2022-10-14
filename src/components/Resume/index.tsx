@@ -52,7 +52,7 @@ export default function index() {
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
   return (
-    <Box className={classes.wrapper}>
+    <Box className={classes.wrapper} id="resume">
       <BackgroundImage src={resumePath} radius="xs" className={classes.image}>
         <Container
           size="sm"

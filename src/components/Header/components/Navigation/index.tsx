@@ -48,7 +48,7 @@ export default function Navigation() {
 
         <Group sx={{ height: '100%' }} spacing={0}>
           {menuList.menu.map(menu => (
-            <a key={menu.href} className={classes.link}>
+            <a key={menu.path} href={menu.path} className={classes.link}>
               {menu.name}
             </a>
           ))}

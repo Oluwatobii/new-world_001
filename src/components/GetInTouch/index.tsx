@@ -8,6 +8,7 @@ export default function index() {
 
   return (
     <SimpleGrid
+      id="contact"
       cols={2}
       spacing="lg"
       breakpoints={[
