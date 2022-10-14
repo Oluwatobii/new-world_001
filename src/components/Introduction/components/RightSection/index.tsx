@@ -1,6 +1,4 @@
 import { createStyles, Center } from '@mantine/core'
-import Triangle from '../../../Global/Triangle'
-import Curve from '../../../Global/Curve'
 
 const useStyles = createStyles(theme => ({
   container: {

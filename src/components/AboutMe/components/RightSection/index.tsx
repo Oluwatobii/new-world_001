@@ -116,7 +116,7 @@ export default function RightSection() {
           })}
         >
           <a href="#contact">
-            <CustomButton text="More About Me" textColor={textColor} />
+            <CustomButton text="Want To Know More?" textColor={textColor} />
           </a>
         </Group>
       </Box>
