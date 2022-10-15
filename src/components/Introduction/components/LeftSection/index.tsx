@@ -82,17 +82,20 @@ export default function LeftSection() {
 
   return (
     <Stack
-      align="flex-start"
+      justify="center"
       spacing="xl"
       sx={theme => ({
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
         height: 400,
         marginTop: '65px',
         [theme.fn.smallerThan('md')]: {
-          marginTop: '-35px'
+          marginTop: '60px'
         },
         [theme.fn.smallerThan('sm')]: {
-          marginTop: '-35px'
+          marginTop: '0px'
+        },
+        [theme.fn.smallerThan('xs')]: {
+          marginTop: '80px'
         }
       })}
     >
@@ -152,8 +155,8 @@ export default function LeftSection() {
             width: '85%'
           })}
         >
-          Excellent at working well with others while holding myself accountable and can also navigate the dynamics of
-          the toughest teams.
+          Excellent at working well with others while holding myself accountable and navigating the dynamics of the
+          toughest teams.
         </Text>
         <Group
           sx={() => ({

@@ -1,10 +1,13 @@
 import { createStyles, Center } from '@mantine/core'
+import RobotAnimation from '../../../../assets/animation/RobotAnimation'
 
 const useStyles = createStyles(theme => ({
   container: {
     display: 'flex',
+    justifyContent: 'center',
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
+    marginLeft: '-100px',
     marginTop: '5rem',
     textAlign: 'center',
     width: '800px',
@@ -28,7 +31,7 @@ export default function RightSection() {
         }
       })}
     >
-      <div>Insert Animation here with Lottie or three.js</div>
+      <RobotAnimation />
     </Center>
   )
 }

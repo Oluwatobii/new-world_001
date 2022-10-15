@@ -33,8 +33,11 @@ export default function index() {
         { maxWidth: 'xs', cols: 1, spacing: 'sm' }
       ]}
       sx={theme => ({
+        [theme.fn.smallerThan('sm')]: {
+          marginTop: '0rem'
+        },
         [theme.fn.smallerThan('xs')]: {
-          marginTop: '12rem'
+          marginTop: '2rem'
         }
       })}
     >

@@ -137,7 +137,7 @@ export default function RightSection() {
             size="lg"
             buttonColor={buttonColor}
             textColor={textColor}
-            options={{ type: 'submit' }}
+            options={{ type: 'submit', disabled: true }}
           />
         </Group>
       </Container>

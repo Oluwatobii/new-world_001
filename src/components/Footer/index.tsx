@@ -1,6 +1,6 @@
 import { createStyles, Text, ActionIcon, Group, Title } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-import { IconBrandTwitter, IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin } from '@tabler/icons'
+import { IconBrandTwitter, IconBrandFacebook, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons'
 import Logo from '../../assets/svgs/Logo'
 import { menuList } from '../Global/menuList'
 
@@ -31,6 +31,19 @@ const useStyles = createStyles(theme => ({
     [theme.fn.smallerThan('sm')]: {
       marginTop: theme.spacing.xs,
       textAlign: 'center'
+    }
+  },
+
+  descriptionText: {
+    color: theme.colorScheme === 'dark' ? theme.colors.brand[1] : theme.colors.brand[0],
+    textDecoration: 'none',
+    display: 'inline-block',
+    transition: 'all 0.2s',
+    '&:hover': {
+      color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
+      boxShadow: '0 1rem 2rem rgba(dark, 0.4)',
+      textTransform: 'uppercase',
+      transform: 'rotate(5deg) scale(1.3)'
     }
   },
 
@@ -128,9 +141,27 @@ export default function Footer() {
       <div className={classes.inner}>
         <div className={classes.logo}>
           <Logo />
+
           <Text size="xs" color="dimmed" className={classes.description}>
-            Built by OLUWATOBI A. BELLO for his portfolio website. You are not allowed to use this webpage for either
-            personal or commercial use. View the source code for this website HERE
+            Built by{' '}
+            <a
+              href="https://github.com/Oluwatobii"
+              className={classes.descriptionText}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Oluwatobi A. Bello
+            </a>{' '}
+            for his portfolio website. You are not allowed to use this webpage for either personal or commercial use.
+            View the source code for this website{' '}
+            <a
+              href="https://github.com/Oluwatobii/new-world_001"
+              className={classes.descriptionText}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>{' '}
           </Text>
         </div>
         {!isTabletSize ? (
@@ -149,18 +180,26 @@ export default function Footer() {
                 Social Media
               </Title>
               <Group className={classes.groups} spacing={0} position="right" noWrap>
-                <ActionIcon size="lg">
-                  <IconBrandFacebook size={18} stroke={1.5} />
-                </ActionIcon>
-                <ActionIcon size="lg">
-                  <IconBrandTwitter size={18} stroke={1.5} />
-                </ActionIcon>
-                <ActionIcon size="lg">
-                  <IconBrandLinkedin size={18} stroke={1.5} />
-                </ActionIcon>
-                <ActionIcon size="lg">
-                  <IconBrandInstagram size={18} stroke={1.5} />
-                </ActionIcon>
+                <a href="https://www.linkedin.com/in/oluwatobibello/" target="_blank" rel="noopener noreferrer">
+                  <ActionIcon size="lg">
+                    <IconBrandLinkedin size={18} stroke={1.5} />
+                  </ActionIcon>
+                </a>
+                <a href="https://github.com/Oluwatobii" target="_blank" rel="noopener noreferrer">
+                  <ActionIcon size="lg">
+                    <IconBrandGithub size={18} stroke={1.5} />
+                  </ActionIcon>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <ActionIcon size="lg">
+                    <IconBrandFacebook size={18} stroke={1.5} />
+                  </ActionIcon>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <ActionIcon size="lg">
+                    <IconBrandTwitter size={18} stroke={1.5} />
+                  </ActionIcon>
+                </a>
               </Group>
             </div>
           </>

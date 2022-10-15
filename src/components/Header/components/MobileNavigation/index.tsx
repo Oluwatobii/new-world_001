@@ -39,7 +39,9 @@ export default function MobileNavigation() {
         </Group>
 
         <Group>
-          <Logo width="80px" height="35px" />
+          <a href="/">
+            <Logo width="80px" height="35px" />
+          </a>
         </Group>
 
         <Group>
@@ -52,8 +54,8 @@ export default function MobileNavigation() {
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
           {menuList.menu.map(menu => (
-            <Box onClick={closeDrawer}>
-              <a key={menu.path} href={menu.path} className={classes.link}>
+            <Box key={menu.path} onClick={closeDrawer}>
+              <a href={menu.path} className={classes.link}>
                 {menu.name}
               </a>
             </Box>

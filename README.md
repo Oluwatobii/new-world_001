@@ -6,7 +6,7 @@ Note: This project was bootstrapped with [Vite](https://vitejs.dev).
 
 ## Preview
 
-<!-- [![Oluwatobi A. Bello's Website](https://{README.md_screenshot_pathway}.png)](https://tbello.dev/) -->
+[![Oluwatobi A. Bello's Website](public/preview.png)](https://tbello.dev/)
 
 **[View Live Preview](https://tbello.dev/)**
 
