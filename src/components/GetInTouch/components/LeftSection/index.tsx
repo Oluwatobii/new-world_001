@@ -21,12 +21,13 @@ export default function LeftSection() {
 
   return (
     <Stack
-      align="flex-start"
       spacing="xl"
       sx={theme => ({
+        display: 'flex',
+        justifyContent: 'center',
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
         height: 400,
-        marginTop: '5px',
+        marginTop: '100px',
         [theme.fn.smallerThan('sm')]: {
           marginTop: '-35px'
         }
