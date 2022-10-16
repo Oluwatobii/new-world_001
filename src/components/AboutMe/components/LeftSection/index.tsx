@@ -1,41 +1,47 @@
-import { createStyles, Box, Image } from '@mantine/core'
+import { createStyles, Stack, Image, useMantineColorScheme } from '@mantine/core'
 import AboutMe from '../../../../assets/svgs/AboutMe'
-/* import AboutMeImage from '../../../../assets/images/about-me.png' */
+
+/*
+import AboutMeImageDark from '../../../../assets/images/about-me-dark.png'
+import AboutMeImageLight from '../../../../assets/images/about-me-light.png'
+*/
 
 const useStyles = createStyles(theme => ({
   container: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-    marginTop: '5rem'
+    justifyContent: 'center',
+    spacing: 'lg'
   }
 }))
 
 export default function LeftSection() {
   const { classes } = useStyles()
+  /*
+  const { colorScheme } = useMantineColorScheme()
+  */
 
   return (
-    <Box
+    <Stack
       className={classes.container}
       sx={theme => ({
         marginTop: '60px',
-        width: '55%',
         [theme.fn.smallerThan('lg')]: {
-          marginTop: '55px',
-          height: '0vh'
+          marginTop: '55px'
         },
         [theme.fn.smallerThan('md')]: {
           height: '0vh'
         },
         [theme.fn.smallerThan('sm')]: {
-          height: '80vh',
-          width: '100vw'
+          height: '80vh'
         }
       })}
     >
       <AboutMe />
-      {/* <Image src={AboutMeImage} alt="portrait" /> */}
-    </Box>
+      {/* {colorScheme === 'dark' ? (
+        <Image src={AboutMeImageDark} width="270px" height="350px" alt="portrait" />
+      ) : (
+        <Image src={AboutMeImageLight} width="270px" height="350px" alt="portrait" />
+      )} */}
+    </Stack>
   )
 }
