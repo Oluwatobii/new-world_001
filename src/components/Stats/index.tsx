@@ -1,4 +1,4 @@
-import { createStyles, SimpleGrid, Box } from '@mantine/core'
+import { createStyles, Box } from '@mantine/core'
 import StatGraph from './components/StatGraph'
 import stats from './stats.json'
 import { useId } from 'react'
@@ -22,30 +22,18 @@ export default function index() {
   const id = useId()
 
   return (
-    <SimpleGrid
-      id="stats"
-      cols={3}
-      spacing="lg"
-      className={classes.main}
-      breakpoints={[
-        { maxWidth: 'md', cols: 2, spacing: 'md' },
-        { maxWidth: 'sm', cols: 1, spacing: 'sm' },
-        { maxWidth: 'xs', cols: 1, spacing: 'sm' }
-      ]}
-      sx={theme => ({
-        [theme.fn.smallerThan('sm')]: {
-          marginTop: '0rem'
-        },
-        [theme.fn.smallerThan('xs')]: {
-          marginTop: '2rem'
-        }
-      })}
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly'
+      }}
     >
       {stats.map(stat => (
         <div className={classes.container} key={`${id}-${stat.subject}`}>
           <StatGraph subject={stat.subject} stat={stat.stat} />
         </div>
       ))}
-    </SimpleGrid>
+    </Box>
   )
 }

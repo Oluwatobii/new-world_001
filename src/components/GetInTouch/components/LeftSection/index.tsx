@@ -21,12 +21,13 @@ export default function LeftSection() {
 
   return (
     <Stack
-      align="flex-start"
       spacing="xl"
       sx={theme => ({
+        display: 'flex',
+        justifyContent: 'center',
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
         height: 400,
-        marginTop: '5px',
+        marginTop: '100px',
         [theme.fn.smallerThan('sm')]: {
           marginTop: '-35px'
         }
@@ -63,7 +64,7 @@ export default function LeftSection() {
           <CustomIcon Icon={<GoLocation size={'45px'} />} title="My Location" text="Ontario, Canada" />
           <CustomIcon Icon={<AiOutlineMail size={'45px'} />} title="Email Address" text="tbellodevelopment@gmail.com" />
           <CustomIcon Icon={<TbWorld size={'45px'} />} title="Website" text="https://tbello.dev" />
-          <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1(111)-111-1111" />
+          <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1 (xxx) xxx-xxxx" />
         </SimpleGrid>
       </Box>
     </Stack>

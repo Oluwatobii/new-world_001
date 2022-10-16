@@ -22,6 +22,9 @@ interface ValuesProps {
 
 const useStyles = createStyles(theme => ({
   wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     marginTop: '95px',
     paddingLeft: theme.spacing.lg,
     paddingRight: theme.spacing.lg

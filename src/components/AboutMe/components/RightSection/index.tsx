@@ -18,9 +18,15 @@ const useStyles = createStyles(theme => ({
       borderRadius: '4px',
       backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941',
       bottom: 0,
-      left: 15,
+      left: 19,
+      [theme.fn.smallerThan('md')]: {
+        left: 20
+      },
+      [theme.fn.smallerThan('sm')]: {
+        left: 20
+      },
       [theme.fn.smallerThan('xs')]: {
-        left: 60
+        left: 15
       }
     }
   },
@@ -46,21 +52,7 @@ export default function RightSection() {
       sx={theme => ({
         display: 'flex',
         justifyContent: 'flex-end',
-        width: '75%',
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
-        [theme.fn.smallerThan('xl')]: {
-          width: '95%'
-        },
-        [theme.fn.smallerThan('lg')]: {
-          width: '75%'
-        },
-        [theme.fn.smallerThan('md')]: {
-          width: '100%'
-        },
-        [theme.fn.smallerThan('xs')]: {
-          marginTop: '-150px',
-          width: '100%'
-        }
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff'
       })}
     >
       <Box

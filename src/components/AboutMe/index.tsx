@@ -17,6 +17,12 @@ export default function index() {
         { maxWidth: 'xs', cols: 1, spacing: 'sm' }
       ]}
       sx={theme => ({
+        [theme.fn.smallerThan('md')]: {
+          marginTop: '-10rem'
+        },
+        [theme.fn.smallerThan('sm')]: {
+          marginTop: '10rem'
+        },
         [theme.fn.smallerThan('xs')]: {
           marginTop: '45rem'
         }
@@ -33,11 +39,22 @@ export default function index() {
         {!isTabletSize ? <LeftSection /> : null}
       </Box>
       <Box
-        sx={() => ({
+        sx={theme => ({
           display: 'flex',
           justifyContent: 'flex-start',
-          width: '95%',
-          marginTop: '20px'
+          maxWidth: '38rem',
+          marginTop: '20px',
+          [theme.fn.smallerThan('md')]: {
+            maxWidth: '70rem'
+          },
+          [theme.fn.smallerThan('sm')]: {
+            marginTop: '-210px',
+            maxWidth: '40rem'
+          },
+          [theme.fn.smallerThan('xs')]: {
+            marginTop: '-150px',
+            maxWidth: '40rem'
+          }
         })}
       >
         <RightSection />
