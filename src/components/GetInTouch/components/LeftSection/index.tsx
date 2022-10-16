@@ -63,7 +63,7 @@ export default function LeftSection() {
           <CustomIcon Icon={<GoLocation size={'45px'} />} title="My Location" text="Ontario, Canada" />
           <CustomIcon Icon={<AiOutlineMail size={'45px'} />} title="Email Address" text="tbellodevelopment@gmail.com" />
           <CustomIcon Icon={<TbWorld size={'45px'} />} title="Website" text="https://tbello.dev" />
-          <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1(111)-111-1111" />
+          <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1 (xxx) xxx-xxxx" />
         </SimpleGrid>
       </Box>
     </Stack>
