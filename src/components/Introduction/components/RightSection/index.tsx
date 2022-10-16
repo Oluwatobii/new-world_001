@@ -10,7 +10,6 @@ const useStyles = createStyles(theme => ({
     marginLeft: '-100px',
     marginTop: '5rem',
     textAlign: 'center',
-    width: '800px',
     height: '400px'
   }
 }))

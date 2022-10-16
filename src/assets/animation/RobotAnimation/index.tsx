@@ -42,7 +42,12 @@ const LightModeAnimation = () => {
     }
   }, [])
 
-  return <Box ref={container} style={{ height: '400px', width: '400px', marginTop: '-60px' }}></Box>
+  return (
+    <Box
+      ref={container}
+      style={{ display: 'flex', justifyContent: 'center', height: '400px', width: '400px', marginTop: '-60px' }}
+    ></Box>
+  )
 }
 
 const DarkModeAnimation = () => {
@@ -65,7 +70,12 @@ const DarkModeAnimation = () => {
     }
   }, [])
 
-  return <Box ref={container} style={{ height: '400px', width: '400px', marginTop: '-60px' }}></Box>
+  return (
+    <Box
+      ref={container}
+      style={{ display: 'flex', justifyContent: 'center', height: '400px', width: '400px', marginTop: '-60px' }}
+    ></Box>
+  )
 }
 
 const RobotAnimation: React.FC = () => {
