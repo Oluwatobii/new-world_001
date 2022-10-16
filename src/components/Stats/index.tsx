@@ -23,6 +23,7 @@ export default function index() {
 
   return (
     <Box
+      id="stats"
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
