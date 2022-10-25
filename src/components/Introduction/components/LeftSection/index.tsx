@@ -24,17 +24,17 @@ const useStyles = createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.colors.white[0] : theme.colors.dark,
     marginTop: '30px',
     margin: 0,
-    marginLeft: '25%',
+    marginLeft: '24.9%',
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     textAlign: 'initial',
     [theme.fn.smallerThan('lg')]: {
       marginTop: '35px',
-      marginLeft: '25%'
+      marginLeft: '24.9%'
     },
     [theme.fn.smallerThan('md')]: {
       marginTop: '30px',
-      marginLeft: '25%'
+      marginLeft: '24.9%'
     },
     [theme.fn.smallerThan('sm')]: {
       marginTop: '45px',
@@ -48,12 +48,12 @@ const useStyles = createStyles(theme => ({
     height: '30px',
     overflow: 'hidden',
     top: '115%',
-    left: '27%',
+    left: '26.5%',
     textAlign: 'initial',
     opacity: 1,
     fontWeight: 'bold',
     [theme.fn.smallerThan('xl')]: {
-      left: '26.7%'
+      left: '26.9%'
     }
   }
 }))
@@ -110,7 +110,7 @@ export default function LeftSection() {
           size="md"
           sx={theme => ({
             fontWeight: 600,
-            marginLeft: '6px',
+            marginLeft: '0.3%',
             color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
             [theme.fn.smallerThan('md')]: {
               marginLeft: '5px'
@@ -131,9 +131,15 @@ export default function LeftSection() {
               sx={theme => ({
                 position: 'absolute',
                 top: 0,
-                marginLeft: '1%',
+                marginLeft: '0.3%',
                 fontSize: '25px',
-                animation: `${slide} 9s infinite`
+                animation: `${slide} 9s infinite`,
+                [theme.fn.smallerThan('xl')]: {
+                  marginLeft: '0%'
+                },
+                [theme.fn.smallerThan('xs')]: {
+                  marginLeft: '2%'
+                }
               })}
             >
               WEB DEVELOPER.
