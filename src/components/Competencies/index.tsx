@@ -82,10 +82,10 @@ export default function index() {
         ]}
       >
         <CustomCard
-          title="2D/3D Designer"
+          title="Full Stack Developer"
           hover={true}
-          Icon={<FaPenNib size="50px" color={iconColor} />}
-          description="I draw cool 2D/3D CAD designs. Should you want to join the Avengers and be the new iron-man, I'll help you with designing the Iron Man suit."
+          Icon={<BsCodeSlash size="50px" color={iconColor} />}
+          description="I develop for the web, working with various stack technologies such as; React, Node, MongoDB, PostgreSQL, Ruby on Rails, and more. This site is built with React!"
         />
         <CustomCard
           title="Mechanical Engineer"
@@ -94,10 +94,10 @@ export default function index() {
           description="Master's in Mechanical Engineering from Concordia University. Designing that internal combustion engine won't be a problem."
         />
         <CustomCard
-          title="Full Stack Developer"
+          title="2D/3D Designer"
           hover={true}
-          Icon={<BsCodeSlash size="50px" color={iconColor} />}
-          description="I develop for the web, working with various stack technologies such as; React, Node, MongoDB, PostgreSQL, Ruby on Rails, and more. This site is built with React!"
+          Icon={<FaPenNib size="50px" color={iconColor} />}
+          description="I draw cool 2D/3D CAD designs. Should you want to join the Avengers and be the new iron-man, I'll help you with designing the Iron Man suit."
         />
       </SimpleGrid>
     </Container>
