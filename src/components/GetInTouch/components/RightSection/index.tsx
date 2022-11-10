@@ -68,13 +68,8 @@ export default function RightSection() {
       message: values.message
     }
 
-    const headers = {
-      'Content-Type': 'application/json',
-      'x-api-key': `${import.meta.env.VITE_API_KEY}`
-    }
-
-    axios
-      .post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, { withCredentials: true, headers })
+    await axios
+      .post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, { withCredentials: true })
       .then((res: AxiosResponse) => {
         if (res.data.message === 'Email Sent') {
           form.reset()

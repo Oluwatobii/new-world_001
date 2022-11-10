@@ -53,12 +53,8 @@ export default function index() {
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
   const handleDownload = async () => {
-    const headers = {
-      'x-api-key': `${import.meta.env.VITE_API_KEY}`
-    }
-
     await axios
-      .get(`${import.meta.env.VITE_HOUSTON}/api/hub/resume`, { withCredentials: true, responseType: 'blob', headers })
+      .get(`${import.meta.env.VITE_HOUSTON}/api/hub/resume`, { withCredentials: true, responseType: 'blob' })
       .then((res: AxiosResponse) => {
         const url = window.URL.createObjectURL(res.data)
         const link = document.createElement('a')
