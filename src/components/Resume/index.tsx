@@ -60,7 +60,7 @@ export default function index() {
     await axios
       .get(`${import.meta.env.VITE_HOUSTON}/api/hub/resume`, { withCredentials: true, responseType: 'blob', headers })
       .then((res: AxiosResponse) => {
-        const url = window.URL.createObjectURL(new Blob([res.data]))
+        const url = window.URL.createObjectURL(res.data)
         const link = document.createElement('a')
         link.href = url
         link.setAttribute('download', 'Oluwatobi A. Bello.pdf')
