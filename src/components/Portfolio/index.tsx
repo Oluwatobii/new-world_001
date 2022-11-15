@@ -143,8 +143,7 @@ export default function index() {
         previousControlIcon={<GrPrevious size={30} />}
         styles={{ viewport: { overflow: 'unset', overflowX: 'clip' } }}
       >
-        {slides}
-        <Carousel.Slide>{null}</Carousel.Slide>
+        {data.length ? slides : <Carousel.Slide>{null}</Carousel.Slide>}
       </Carousel>
     </Container>
   )
