@@ -6,35 +6,43 @@ import portfolioFourPath from '../../assets/images/port-4.png'
 export const portfolioData = {
   data: [
     {
+      id: '1',
       title: 'Tracker',
       image: portfolioFourPath,
-      imageOverLayColor: '#2A9BD4',
+      color: '#2A9BD4',
       url: 'https://tracker.tbello.dev',
       description:
-        'The Bug/Project Tracker web application helps in visualizing the progress of projects and potential bugs that are related.'
+        'The Bug/Project Tracker web application helps in visualizing the progress of projects and potential bugs that are related.',
+      active: true
     },
     {
+      id: '2',
       title: 'Scheduler',
       image: portfolioOnePath,
-      imageOverLayColor: '#DD7230',
+      color: '#DD7230',
       url: 'https://upbeat-hawking-a45e1b.netlify.app/',
-      description: 'A React application that allows users to book and cancel interview on selected days of the week.'
+      description: 'A React application that allows users to book and cancel interview on selected days of the week.',
+      active: true
     },
     {
+      id: '3',
       title: 'Tutorama',
       image: portfolioTwoPath,
-      imageOverLayColor: '#5643FA',
+      color: '#5643FA',
       url: '/',
       description:
-        'The Tutorama App makes it easy for students to instantly connect with expert tutros for in-person lessons.'
+        'The Tutorama App makes it easy for students to instantly connect with expert tutros for in-person lessons.',
+      active: true
     },
     {
+      id: '4',
       title: 'QuizApp',
       image: portfolioThreePath,
-      imageOverLayColor: '#2C5F2D',
+      color: '#2C5F2D',
       url: '/',
       description:
-        'An app that lets you create quizzes and share them between friends. The creator of the quiz can view and share all the results at the end of the quiz.'
+        'An app that lets you create quizzes and share them between friends. The creator of the quiz can view and share all the results at the end of the quiz.',
+      active: true
     }
   ]
 }

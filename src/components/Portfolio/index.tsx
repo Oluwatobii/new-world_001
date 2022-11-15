@@ -1,11 +1,13 @@
 import { Carousel } from '@mantine/carousel'
 import { useMediaQuery } from '@mantine/hooks'
-import { Container, Title, createStyles, Box, useMantineColorScheme } from '@mantine/core'
+import { useEffect, useState } from 'react'
+import { Container, Title, createStyles, useMantineColorScheme } from '@mantine/core'
 import { GrNext } from 'react-icons/gr'
 import { GrPrevious } from 'react-icons/gr'
 import CustomButton from '../Global/Button'
 import CustomCard from '../Global/Card'
 import { portfolioData } from './portfolio'
+import axios, { AxiosResponse } from 'axios'
 
 const useStyles = createStyles(theme => ({
   main: {
@@ -61,24 +63,59 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
+interface Props {
+  id: string
+  title: string
+  description: string
+  image: string
+  color: string
+  url: string
+  active: boolean
+}
+
 export default function index() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
+  const [data, setData] = useState<Props[]>([])
   const isTabletSize = useMediaQuery('(max-width: 62em)')
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
-  const slides = portfolioData.data.map(item => (
-    <Carousel.Slide key={item.title}>
+
+  const getData = async () => {
+    try {
+      const response: AxiosResponse = await axios.get(
+        `${import.meta.env.VITE_HOUSTON}/api/hub/portfolio/${import.meta.env.VITE_APP_ID}`,
+        {
+          withCredentials: true
+        }
+      )
+      const data: Props[] = response?.data?.data?.projects
+      const activeData = data.filter(({ active }: { active: boolean }) => active)
+      setData(activeData)
+    } catch (error) {
+      setData(portfolioData.data)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
+  const slides = data.map(item => (
+    <Carousel.Slide key={item.id}>
       <CustomCard
         title={item.title}
         Button={
           <CustomButton
             text="Launch"
             textColor={buttonTextColor}
-            options={{ onClick: () => window.open(item.url, '_blank') }}
+            options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
           />
         }
-        image={item.image}
-        imageOverLayColor={item.imageOverLayColor}
+        image={
+          item.image === ''
+            ? 'https://res.cloudinary.com/otbi/image/upload/v1668442081/otbi/houston/portfolio/coming-soon_nuh1xf.jpg'
+            : item.image
+        }
+        imageOverLayColor={item.color}
         height={'400px'}
         titleAlign="initial"
         description={item.description}
@@ -107,6 +144,7 @@ export default function index() {
         styles={{ viewport: { overflow: 'unset', overflowX: 'clip' } }}
       >
         {slides}
+        <Carousel.Slide>{null}</Carousel.Slide>
       </Carousel>
     </Container>
   )
