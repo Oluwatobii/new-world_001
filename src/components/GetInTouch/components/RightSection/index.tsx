@@ -11,6 +11,7 @@ import {
 import { useForm } from '@mantine/form'
 import { useMediaQuery } from '@mantine/hooks'
 import CustomButton from '../../../Global/Button'
+import axios, { AxiosResponse } from 'axios'
 
 interface ValuesProps {
   firstName: string
@@ -56,9 +57,27 @@ export default function RightSection() {
     }
   })
 
-  const handleSubmit = (values: ValuesProps) => {
-    /** Make a Post request to Houston */
-    form.reset()
+  const handleSubmit = async (values: ValuesProps) => {
+    const mail = {
+      email: values.email,
+      fullName: `${values.firstName} ${values.lastName}`,
+      to: `${import.meta.env.VITE_PERSONAL_EMAIL}`,
+      bcc: [],
+      host: 'new-world_001',
+      subject: values.subject,
+      message: values.message
+    }
+
+    await axios
+      .post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, { withCredentials: true })
+      .then((res: AxiosResponse) => {
+        if (res.data.message === 'Email Sent') {
+          form.reset()
+        }
+      })
+      .catch((error: Error) => {
+        console.log(error)
+      })
   }
 
   return (
@@ -140,7 +159,7 @@ export default function RightSection() {
             size="lg"
             buttonColor={buttonColor}
             textColor={textColor}
-            options={{ type: 'submit', disabled: true }}
+            options={{ type: 'submit' }}
           />
         </Group>
       </Container>

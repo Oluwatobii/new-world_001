@@ -1,6 +1,7 @@
 import { BackgroundImage, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
 import CustomButton from '../Global/Button'
 import resumePath from '../../assets/images/resume-backgnd.png'
+import axios, { AxiosResponse } from 'axios'
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -51,6 +52,22 @@ export default function index() {
   const { colorScheme } = useMantineColorScheme()
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
+  const handleDownload = async () => {
+    await axios
+      .get(`${import.meta.env.VITE_HOUSTON}/api/hub/resume`, { withCredentials: true, responseType: 'blob' })
+      .then((res: AxiosResponse) => {
+        const url = window.URL.createObjectURL(res.data)
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'Oluwatobi A. Bello.pdf')
+        document.body.appendChild(link)
+        link.click()
+      })
+      .catch((error: Error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <Box className={classes.wrapper} id="resume">
       <BackgroundImage src={resumePath} radius="xs" className={classes.image}>
@@ -89,7 +106,7 @@ export default function index() {
               text="Download"
               textColor={buttonTextColor}
               options={{
-                onClick: () => window.open('https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf', '_blank')
+                onClick: handleDownload
               }}
             />
           </Box>
