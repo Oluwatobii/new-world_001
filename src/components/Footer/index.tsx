@@ -160,6 +160,16 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              here.
+            </a>{' '}
+            <br />
+            Administravive Fearures? click{' '}
+            <a
+              href="https://houston.tbello.dev"
+              className={classes.descriptionText}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               here
             </a>{' '}
           </Text>
