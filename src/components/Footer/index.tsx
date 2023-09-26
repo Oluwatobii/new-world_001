@@ -42,7 +42,6 @@ const useStyles = createStyles(theme => ({
     '&:hover': {
       color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
       boxShadow: '0 1rem 2rem rgba(dark, 0.4)',
-      textTransform: 'uppercase',
       transform: 'rotate(5deg) scale(1.3)'
     }
   },
@@ -163,7 +162,7 @@ export default function Footer() {
               here.
             </a>{' '}
             <br />
-            Administravive Fearures? click{' '}
+            Administrative Fearures? click{' '}
             <a
               href="https://houston.tbello.dev"
               className={classes.descriptionText}
@@ -198,16 +197,6 @@ export default function Footer() {
                 <a href="https://github.com/Oluwatobii" target="_blank" rel="noopener noreferrer">
                   <ActionIcon size="lg">
                     <IconBrandGithub size={18} stroke={1.5} />
-                  </ActionIcon>
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                  <ActionIcon size="lg">
-                    <IconBrandFacebook size={18} stroke={1.5} />
-                  </ActionIcon>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                  <ActionIcon size="lg">
-                    <IconBrandTwitter size={18} stroke={1.5} />
                   </ActionIcon>
                 </a>
               </Group>
