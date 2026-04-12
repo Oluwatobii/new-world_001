@@ -11,7 +11,7 @@ import {
 import { useForm } from '@mantine/form'
 import { useMediaQuery } from '@mantine/hooks'
 import CustomButton from '../../../Global/Button'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 interface ValuesProps {
   firstName: string
@@ -68,16 +68,16 @@ export default function RightSection() {
       message: values.message
     }
 
-    await axios
-      .post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, { withCredentials: true })
-      .then((res: AxiosResponse) => {
-        if (res.data.message === 'Email Sent') {
-          form.reset()
-        }
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, {
+        withCredentials: true
       })
-      .catch((error: Error) => {
-        console.log(error)
-      })
+      if (res.status >= 200 && res.status < 300) {
+        form.reset()
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
