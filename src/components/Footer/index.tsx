@@ -108,6 +108,7 @@ const useStyles = createStyles(theme => ({
 export default function Footer() {
   const { classes } = useStyles()
   const isTabletSize = useMediaQuery('(max-width: 62em)')
+  const currentYear = new Date().getFullYear()
 
   const groups = menuList.groups.map(group => {
     const links = group.links.map((link, index) => (
@@ -205,7 +206,7 @@ export default function Footer() {
         ) : null}
       </div>
       <div className={classes.afterFooter}>
-        <Text size="sm">© 2022 Oluwatobi A. Bello. All rights reserved.</Text>
+        <Text size="sm">© {currentYear} Oluwatobi A. Bello. All rights reserved.</Text>
       </div>
     </footer>
   )
