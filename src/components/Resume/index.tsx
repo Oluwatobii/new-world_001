@@ -1,7 +1,11 @@
 import { BackgroundImage, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
+import { useEffect, useState } from 'react'
 import CustomButton from '../Global/Button'
 import resumePath from '../../assets/images/resume-backgnd.png'
 import axios, { AxiosResponse } from 'axios'
+
+/** Used when the hub resume endpoint fails or returns no URL (same file as footer Resume link). */
+const FALLBACK_RESUME_URL = 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf'
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -51,22 +55,31 @@ export default function index() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
+  const [resumeHref, setResumeHref] = useState<string | null>(null)
 
-  const handleDownload = async () => {
-    await axios
-      .get(`${import.meta.env.VITE_HOUSTON}/api/hub/resume`, { withCredentials: true, responseType: 'blob' })
-      .then((res: AxiosResponse) => {
-        const url = window.URL.createObjectURL(res.data)
-        const link = document.createElement('a')
-        link.href = url
-        link.setAttribute('download', 'Oluwatobi A. Bello.pdf')
-        document.body.appendChild(link)
-        link.click()
+  const getResumeUrl = async () => {
+    const base = import.meta.env.VITE_HOUSTON?.trim()
+    if (!base) {
+      setResumeHref(FALLBACK_RESUME_URL)
+      return
+    }
+    const resumeApiUrl = `${base}/api/hub/resume`
+    try {
+      const response: AxiosResponse<{ url?: string }> = await axios.get(resumeApiUrl, {
+        withCredentials: true
       })
-      .catch((error: Error) => {
-        console.log(error)
-      })
+      const raw = response.data?.url
+      const url = typeof raw === 'string' && raw.trim() ? raw.trim() : undefined
+      setResumeHref(url ?? FALLBACK_RESUME_URL)
+    } catch (error) {
+      console.warn('[Resume] hub resume request failed, using fallback URL', error)
+      setResumeHref(FALLBACK_RESUME_URL)
+    }
   }
+
+  useEffect(() => {
+    void getResumeUrl()
+  }, [])
 
   return (
     <Box className={classes.wrapper} id="resume">
@@ -96,6 +109,7 @@ export default function index() {
             sx={theme => ({
               marginTop: '4.5rem',
               marginLeft: '17rem',
+              width: 'fit-content',
               cursor: 'pointer',
               [theme.fn.smallerThan('xs')]: {
                 marginLeft: '5rem'
@@ -105,9 +119,17 @@ export default function index() {
             <CustomButton
               text="Download"
               textColor={buttonTextColor}
-              options={{
-                onClick: handleDownload
-              }}
+              options={
+                resumeHref
+                  ? {
+                      component: 'a',
+                      href: resumeHref,
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                      sx: { width: 'fit-content' }
+                    }
+                  : { disabled: true, sx: { width: 'fit-content' } }
+              }
             />
           </Box>
         </Container>
