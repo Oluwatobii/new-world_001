@@ -3,6 +3,7 @@ import { useDisclosure } from '@mantine/hooks'
 import Logo from '@/assets/svgs/Logo'
 import ColorSchemeToggle from '../ColorSchemeToggle'
 import { menuList } from '@/components/Global/menuList'
+import useActiveSection from '@/hooks/useActiveSection'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -14,6 +15,7 @@ const useStyles = createStyles(theme => ({
     textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontWeight: 500,
+    transition: 'background-color .2s ease-in-out, color .2s ease-in-out',
 
     [theme.fn.smallerThan('sm')]: {
       height: 42,
@@ -25,11 +27,16 @@ const useStyles = createStyles(theme => ({
     '&:hover::before': {
       backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941'
     }
+  },
+  linkActive: {
+    color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
   }
 }))
 export default function MobileNavigation() {
   const { classes, theme } = useStyles()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
+  const activeSection = useActiveSection()
 
   return (
     <>
@@ -55,7 +62,10 @@ export default function MobileNavigation() {
 
           {menuList.menu.map(menu => (
             <Box key={menu.path} onClick={closeDrawer}>
-              <a href={menu.path} className={classes.link}>
+              <a
+                href={menu.path}
+                className={`${classes.link} ${activeSection === menu.path ? classes.linkActive : ''}`.trim()}
+              >
                 {menu.name}
               </a>
             </Box>

@@ -2,6 +2,7 @@ import { createStyles, Header, Group } from '@mantine/core'
 import ColorSchemeToggle from '../ColorSchemeToggle'
 import Logo from '@/assets/svgs/Logo'
 import { menuList } from '@/components/Global/menuList'
+import useActiveSection from '@/hooks/useActiveSection'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -14,6 +15,7 @@ const useStyles = createStyles(theme => ({
     fontWeight: 500,
     position: 'relative',
     cursor: 'pointer',
+    transition: 'color .2s ease-in-out, transform .2s ease-in-out',
 
     '&::before': {
       content: '""',
@@ -29,7 +31,19 @@ const useStyles = createStyles(theme => ({
       transition: 'transform .3s ease-in-out'
     },
 
+    '&:hover': {
+      transform: 'translateY(-1px)'
+    },
+
     '&:hover::before': {
+      transformOrigin: 'left',
+      transform: 'scaleX(1)'
+    }
+  },
+  linkActive: {
+    color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
+
+    '&::before': {
       transformOrigin: 'left',
       transform: 'scaleX(1)'
     }
@@ -38,6 +52,7 @@ const useStyles = createStyles(theme => ({
 
 export default function Navigation() {
   const { classes } = useStyles()
+  const activeSection = useActiveSection()
 
   return (
     <Header height={60} px="md">
@@ -50,7 +65,11 @@ export default function Navigation() {
 
         <Group sx={{ height: '100%' }} spacing={0}>
           {menuList.menu.map(menu => (
-            <a key={menu.path} href={menu.path} className={classes.link}>
+            <a
+              key={menu.path}
+              href={menu.path}
+              className={`${classes.link} ${activeSection === menu.path ? classes.linkActive : ''}`.trim()}
+            >
               {menu.name}
             </a>
           ))}

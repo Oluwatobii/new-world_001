@@ -16,7 +16,13 @@ const useStyles = createStyles(theme => ({
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     borderBottomLeftRadius: '13px',
-    borderTopRightRadius: '13px'
+    borderTopRightRadius: '13px',
+    transition: 'transform .18s ease, box-shadow .18s ease',
+
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: theme.shadows.md
+    }
   }
 }))
 

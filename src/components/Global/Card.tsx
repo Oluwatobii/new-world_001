@@ -8,7 +8,8 @@ const useStyles = createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    transition: 'transform .22s ease, box-shadow .22s ease'
   },
 
   imageText: {
@@ -92,9 +93,11 @@ export default function CustomCard({
             return {
               height: height,
               ...theme.fn.hover({
+                transform: 'translateY(-4px)',
+                boxShadow: theme.shadows.xl,
                 color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
                 backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
-              })
+              }),
             }
           }
           return {

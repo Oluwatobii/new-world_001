@@ -8,7 +8,6 @@ export default function index() {
 
   return (
     <Box
-      id="contact"
       sx={theme => ({
         display: 'flex',
         justifyContent: 'space-around',

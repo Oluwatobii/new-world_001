@@ -8,6 +8,9 @@ import Portfolio from './components/Portfolio'
 import Resume from './components/Resume'
 import GetInTouch from './components/GetInTouch'
 import Footer from './components/Footer'
+import MotionReveal from '@/components/Global/MotionReveal'
+import ScrollProgress from '@/components/Global/ScrollProgress'
+import { ActiveSectionProvider } from '@/contexts/ActiveSectionContext'
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 
@@ -33,15 +36,32 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
       >
-        <Header />
-        <Introduction />
-        <Stats />
-        <Competencies />
-        <AboutMe />
-        <Portfolio />
-        <Resume />
-        <GetInTouch />
-        <Footer />
+        <ActiveSectionProvider>
+          <ScrollProgress />
+          <Header />
+          <MotionReveal id="home">
+            <Introduction />
+          </MotionReveal>
+          <MotionReveal id="stats">
+            <Stats />
+          </MotionReveal>
+          <MotionReveal id="competencies">
+            <Competencies />
+          </MotionReveal>
+          <MotionReveal id="about">
+            <AboutMe />
+          </MotionReveal>
+          <MotionReveal id="portfolio">
+            <Portfolio />
+          </MotionReveal>
+          <MotionReveal id="resume">
+            <Resume />
+          </MotionReveal>
+          <MotionReveal id="contact">
+            <GetInTouch />
+          </MotionReveal>
+          <Footer />
+        </ActiveSectionProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   )

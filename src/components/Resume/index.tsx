@@ -79,7 +79,7 @@ export default function index() {
   }, [])
 
   return (
-    <Box className={classes.wrapper} id="resume">
+    <Box className={classes.wrapper}>
       <BackgroundImage src={resumePath} radius="xs" className={classes.image}>
         <Container
           size="sm"

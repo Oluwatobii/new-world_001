@@ -2,3 +2,45 @@
   margin: 0 auto;
   padding: 0.3rem;
 }
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.scroll-progress__bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #39f758, #2ca941);
+  transform-origin: left center;
+  transition: transform 120ms ease-out;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.motion-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress__bar,
+  .motion-reveal {
+    transition: none;
+  }
+
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

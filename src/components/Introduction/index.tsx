@@ -8,7 +8,6 @@ export default function index() {
 
   return (
     <Box
-      id="home"
       sx={{
         display: 'flex',
         justifyContent: 'space-around'

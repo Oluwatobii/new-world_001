@@ -60,6 +60,11 @@ const useStyles = createStyles(theme => ({
   text: {
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md
+  },
+
+  carouselWrapper: {
+    position: 'relative',
+    paddingBottom: '4.5rem'
   }
 }))
 
@@ -106,28 +111,61 @@ export default function index() {
     </Carousel.Slide>
   ))
   return (
-    <Container size="lg" id="portfolio">
+    <Container size="lg">
       <Title align="center" className={classes.title}>
         Latest Projects
       </Title>
 
-      <Carousel
-        withIndicators
-        loop
-        slideSize="33%"
-        breakpoints={[
-          { maxWidth: 'md', slideSize: '50%' },
-          { maxWidth: 'sm', slideSize: '100%', slideGap: 5 }
-        ]}
-        slideGap="xl"
-        align="start"
-        slidesToScroll={isTabletSize ? 1 : 2}
-        nextControlIcon={<GrNext size={30} />}
-        previousControlIcon={<GrPrevious size={30} />}
-        styles={{ viewport: { overflow: 'unset', overflowX: 'clip' } }}
-      >
-        {data.length ? slides : <Carousel.Slide>{null}</Carousel.Slide>}
-      </Carousel>
+      <div className={classes.carouselWrapper}>
+        <Carousel
+          withIndicators
+          loop
+          slideSize="33%"
+          breakpoints={[
+            { maxWidth: 'md', slideSize: '50%' },
+            { maxWidth: 'sm', slideSize: '100%', slideGap: 5 }
+          ]}
+          slideGap="xl"
+          align="start"
+          slidesToScroll={isTabletSize ? 1 : 2}
+          nextControlIcon={<GrNext size={22} />}
+          previousControlIcon={<GrPrevious size={22} />}
+          styles={theme => ({
+            viewport: { overflow: 'unset', overflowX: 'clip' },
+            controls: {
+              insetInline: isTabletSize ? 8 : -18
+            },
+            control: {
+              width: 42,
+              height: 42,
+              border: 0,
+              boxShadow: theme.shadows.md,
+              backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.white,
+              color: theme.colorScheme === 'dark' ? theme.black : theme.black,
+              opacity: 0.96,
+              '&[data-inactive]': {
+                opacity: 0,
+                cursor: 'default'
+              }
+            },
+            indicators: {
+              bottom: -28
+            },
+            indicator: {
+              width: 10,
+              height: 10,
+              backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[5] : theme.colors.gray[5],
+              transition: 'width 150ms ease, opacity 150ms ease',
+              '&[data-active]': {
+                width: 26,
+                backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
+              }
+            }
+          })}
+        >
+          {data.length ? slides : <Carousel.Slide>{null}</Carousel.Slide>}
+        </Carousel>
+      </div>
     </Container>
   )
 }

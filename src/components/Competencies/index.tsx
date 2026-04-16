@@ -42,7 +42,6 @@ export default function index() {
 
   return (
     <Container
-      id="competencies"
       size="lg"
       className={classes.wrapper}
       sx={theme => ({
