@@ -27,23 +27,10 @@ export const getHubConfig = () => {
 }
 
 export const getHubHeaders = () => {
-  const headers = {
+  return {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   }
-
-  const apiKey = process.env.HUB_API_KEY?.trim()
-  const authToken = process.env.HUB_AUTH_TOKEN?.trim()
-
-  if (apiKey) {
-    headers['x-api-key'] = apiKey
-  }
-
-  if (authToken) {
-    headers.Authorization = `Bearer ${authToken}`
-  }
-
-  return headers
 }
 
 export const hubFetch = async (path, init = {}) => {
