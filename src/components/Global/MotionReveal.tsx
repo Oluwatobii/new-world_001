@@ -3,7 +3,6 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
 interface MotionRevealProps {
   children: ReactNode
   className?: string
-  /** Section id for in-page nav / scroll-spy (hash links). Applied to the outer wrapper so layout geometry is reliable. */
   id?: string
 }
 

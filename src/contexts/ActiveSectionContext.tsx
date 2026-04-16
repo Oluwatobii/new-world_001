@@ -40,9 +40,6 @@ function removeScrollListener(
   target.removeEventListener('scroll', handler, options)
 }
 
-/**
- * Must wrap the page so effects run after section nodes exist in the DOM.
- */
 export function ActiveSectionProvider({ children }: { children: ReactNode }) {
   const [active, setActive] = useState(defaultPath)
 
@@ -67,6 +64,11 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
     addScrollListener(document.getElementById('root'), onScroll, scrollOpts)
 
     window.addEventListener('resize', schedule, { passive: true })
+
+    window.addEventListener('touchmove', schedule, { passive: true, capture: true })
+    document.addEventListener('touchmove', schedule, { passive: true, capture: true })
+    window.addEventListener('touchend', schedule, { passive: true, capture: true })
+
     const vv = window.visualViewport
     if (vv) {
       vv.addEventListener('scroll', schedule, { passive: true })
@@ -97,6 +99,9 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
       removeScrollListener(document.scrollingElement, onScroll, scrollOpts)
       removeScrollListener(document.getElementById('root'), onScroll, scrollOpts)
       window.removeEventListener('resize', schedule)
+      window.removeEventListener('touchmove', schedule, { capture: true })
+      document.removeEventListener('touchmove', schedule, { capture: true })
+      window.removeEventListener('touchend', schedule, { capture: true })
       if (vv) {
         vv.removeEventListener('scroll', schedule)
         vv.removeEventListener('resize', schedule)
