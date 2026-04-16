@@ -1,7 +1,7 @@
-import portfolioOnePath from '../../assets/images/port-1.png'
-import portfolioTwoPath from '../../assets/images/port-2.png'
-import portfolioThreePath from '../../assets/images/port-3.png'
-import portfolioFourPath from '../../assets/images/port-4.png'
+import portfolioOnePath from '@/assets/images/port-1.png'
+import portfolioTwoPath from '@/assets/images/port-2.png'
+import portfolioThreePath from '@/assets/images/port-3.png'
+import portfolioFourPath from '@/assets/images/port-4.png'
 
 export const portfolioData = {
   data: [

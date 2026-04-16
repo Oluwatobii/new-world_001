@@ -1,5 +1,5 @@
 import { Container, Text, Title, createStyles, SimpleGrid, useMantineColorScheme } from '@mantine/core'
-import CustomCard from '../Global/Card'
+import CustomCard from '@/components/Global/Card'
 import { FaPenNib } from 'react-icons/fa'
 import { MdEngineering } from 'react-icons/md'
 import { BsCodeSlash } from 'react-icons/bs'

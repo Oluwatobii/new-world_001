@@ -1,5 +1,5 @@
 import { createStyles, Center } from '@mantine/core'
-import RobotAnimation from '../../../../assets/animation/RobotAnimation'
+import RobotAnimation from '@/assets/animation/RobotAnimation'
 
 const useStyles = createStyles(theme => ({
   container: {

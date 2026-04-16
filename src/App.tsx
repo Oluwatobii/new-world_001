@@ -1,5 +1,5 @@
 import './App.css'
-import Header from '../src/components/Header'
+import Header from '@/components/Header'
 import Introduction from './components/Introduction'
 import Stats from './components/Stats'
 import Competencies from './components/Competencies'

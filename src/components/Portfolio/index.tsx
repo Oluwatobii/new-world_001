@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import { Container, Title, createStyles, useMantineColorScheme } from '@mantine/core'
 import { GrNext } from 'react-icons/gr'
 import { GrPrevious } from 'react-icons/gr'
-import CustomButton from '../Global/Button'
-import CustomCard from '../Global/Card'
+import CustomButton from '@/components/Global/Button'
+import CustomCard from '@/components/Global/Card'
+import { getPortfolioData, PortfolioProject } from '@/lib/portfolio'
 import { portfolioData } from './portfolio'
-import axios, { AxiosResponse } from 'axios'
 
 const useStyles = createStyles(theme => ({
   main: {
@@ -63,34 +63,17 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-interface Props {
-  id: string
-  title: string
-  description: string
-  image: string
-  color: string
-  url: string
-  active: boolean
-}
-
 export default function index() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
-  const [data, setData] = useState<Props[]>([])
+  const [data, setData] = useState<PortfolioProject[]>([])
   const isTabletSize = useMediaQuery('(max-width: 62em)')
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
   const getData = async () => {
     try {
-      const response: AxiosResponse = await axios.get(
-        `${import.meta.env.VITE_HOUSTON}/api/hub/portfolio/${import.meta.env.VITE_APP_ID}`,
-        {
-          withCredentials: true
-        }
-      )
-      const data: Props[] = response?.data?.data?.projects
-      const activeData = data.filter(({ active }: { active: boolean }) => active)
-      setData(activeData)
+      const payload = await getPortfolioData()
+      setData(payload.projects ?? [])
     } catch (error) {
       setData(portfolioData.data)
     }
@@ -99,7 +82,7 @@ export default function index() {
     getData()
   }, [])
 
-  const slides = data.map(item => (
+  const slides = data.map((item: PortfolioProject) => (
     <Carousel.Slide key={item.id}>
       <CustomCard
         title={item.title}

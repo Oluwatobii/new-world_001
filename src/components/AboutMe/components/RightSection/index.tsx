@@ -1,5 +1,5 @@
 import { createStyles, Stack, Title, Text, Box, Group, useMantineColorScheme } from '@mantine/core'
-import CustomButton from '../../../Global/Button'
+import CustomButton from '@/components/Global/Button'
 
 const useStyles = createStyles(theme => ({
   title: {

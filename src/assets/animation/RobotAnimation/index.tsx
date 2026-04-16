@@ -3,12 +3,12 @@ import { Text, Box, Image, useMantineColorScheme } from '@mantine/core'
 import lottie from 'lottie-web'
 import LightModeRobotAnimationData from './LightModeRobot.json'
 import DarkModeRobotAnimationData from './DarkModeRobot.json'
-import lightModeFallBackImage from '../../images/light-mode-robot.png'
-import darkModeFallBackImage from '../../images/dark-mode-robot.png'
+import lightModeFallbackImage from '@/assets/images/light-mode-robot.png'
+import darkModeFallbackImage from '@/assets/images/dark-mode-robot.png'
 
-const DefautImage: React.FC = () => {
+const DefaultImage: React.FC = () => {
   const { colorScheme } = useMantineColorScheme()
-  const source = colorScheme === 'dark' ? darkModeFallBackImage : lightModeFallBackImage
+  const source = colorScheme === 'dark' ? darkModeFallbackImage : lightModeFallbackImage
 
   return (
     <Box style={{ height: '150px', width: '250px', marginTop: '-200px' }}>
@@ -83,9 +83,9 @@ const RobotAnimation: React.FC = () => {
 
   return (
     <Box component="section">
-      <Suspense fallback={<DefautImage />}>
+      <Suspense fallback={<DefaultImage />}>
         {colorScheme === 'dark' ? <DarkModeAnimation /> : <LightModeAnimation />}
-        {/* <DefautImage /> */}
+        {/* <DefaultImage /> */}
       </Suspense>
     </Box>
   )

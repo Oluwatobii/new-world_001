@@ -1,7 +1,7 @@
 import { createStyles, Header, Group } from '@mantine/core'
 import ColorSchemeToggle from '../ColorSchemeToggle'
-import Logo from '../../../../assets/svgs/Logo'
-import { menuList } from '../../../Global/menuList'
+import Logo from '@/assets/svgs/Logo'
+import { menuList } from '@/components/Global/menuList'
 
 const useStyles = createStyles(theme => ({
   link: {

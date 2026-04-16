@@ -1,8 +1,8 @@
 import { BackgroundImage, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
 import { useEffect, useState } from 'react'
-import CustomButton from '../Global/Button'
-import resumePath from '../../assets/images/resume-backgnd.png'
-import axios, { AxiosResponse } from 'axios'
+import CustomButton from '@/components/Global/Button'
+import resumePath from '@/assets/images/resume-backgnd.png'
+import { api } from '@/lib/api'
 
 /** Used when the hub resume endpoint fails or returns no URL (same file as footer Resume link). */
 const FALLBACK_RESUME_URL = 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf'
@@ -58,17 +58,14 @@ export default function index() {
   const [resumeHref, setResumeHref] = useState<string | null>(null)
 
   const getResumeUrl = async () => {
-    const base = import.meta.env.VITE_HOUSTON?.trim()
-    if (!base) {
-      setResumeHref(FALLBACK_RESUME_URL)
-      return
-    }
-    const resumeApiUrl = `${base}/api/hub/resume`
     try {
-      const response: AxiosResponse<{ url?: string }> = await axios.get(resumeApiUrl, {
-        withCredentials: true
-      })
-      const raw = response.data?.url
+      const response = await fetch(api.resume)
+      if (!response.ok) {
+        throw new Error('Failed to fetch resume URL')
+      }
+
+      const payload: { url?: string } = await response.json()
+      const raw = payload.url
       const url = typeof raw === 'string' && raw.trim() ? raw.trim() : undefined
       setResumeHref(url ?? FALLBACK_RESUME_URL)
     } catch (error) {

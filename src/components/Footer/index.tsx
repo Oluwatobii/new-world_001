@@ -1,8 +1,8 @@
 import { createStyles, Text, ActionIcon, Group, Title } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { IconBrandTwitter, IconBrandFacebook, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons'
-import Logo from '../../assets/svgs/Logo'
-import { menuList } from '../Global/menuList'
+import Logo from '@/assets/svgs/Logo'
+import { menuList } from '@/components/Global/menuList'
 
 const useStyles = createStyles(theme => ({
   footer: {

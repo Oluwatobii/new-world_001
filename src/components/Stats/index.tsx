@@ -2,7 +2,7 @@ import { createStyles, Box } from '@mantine/core'
 import StatGraph from './components/StatGraph'
 import { statData } from './stats'
 import { useEffect, useState } from 'react'
-import axios, { AxiosResponse } from 'axios'
+import { getPortfolioData, PortfolioStat } from '@/lib/portfolio'
 
 const useStyles = createStyles(theme => ({
   main: {
@@ -18,28 +18,14 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-interface Props {
-  id: string
-  subject: string
-  stat: string
-  active: boolean
-}
-
 export default function index() {
   const { classes } = useStyles()
-  const [data, setData] = useState<Props[]>([])
+  const [data, setData] = useState<PortfolioStat[]>([])
 
   const getData = async () => {
     try {
-      const response: AxiosResponse = await axios.get(
-        `${import.meta.env.VITE_HOUSTON}/api/hub/portfolio/${import.meta.env.VITE_APP_ID}`,
-        {
-          withCredentials: true
-        }
-      )
-      const data: Props[] = response?.data?.data?.stats
-      const activeData = data.filter(({ active }: { active: boolean }) => active)
-      setData(activeData)
+      const payload = await getPortfolioData()
+      setData(payload.stats ?? [])
     } catch (error) {
       setData(statData.data)
     }
@@ -57,7 +43,7 @@ export default function index() {
         justifyContent: 'space-evenly'
       }}
     >
-      {data.map((stat: Props) => (
+      {data.map((stat: PortfolioStat) => (
         <div className={classes.container} key={stat.id}>
           <StatGraph subject={stat.subject} stat={stat.stat} />
         </div>

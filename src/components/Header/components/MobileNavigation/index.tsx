@@ -1,8 +1,8 @@
 import { createStyles, Group, Divider, Burger, Drawer, ScrollArea, Box } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import Logo from '../../../../assets/svgs/Logo'
+import Logo from '@/assets/svgs/Logo'
 import ColorSchemeToggle from '../ColorSchemeToggle'
-import { menuList } from '../../../Global/menuList'
+import { menuList } from '@/components/Global/menuList'
 
 const useStyles = createStyles(theme => ({
   link: {

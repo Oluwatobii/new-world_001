@@ -1,9 +1,9 @@
 import { createStyles, Stack, Image, useMantineColorScheme } from '@mantine/core'
-import AboutMe from '../../../../assets/svgs/AboutMe'
+import AboutMe from '@/assets/svgs/AboutMe'
 
 /*
-import AboutMeImageDark from '../../../../assets/images/about-me-dark.png'
-import AboutMeImageLight from '../../../../assets/images/about-me-light.png'
+import AboutMeImageDark from '@/assets/images/about-me-dark.png'
+import AboutMeImageLight from '@/assets/images/about-me-light.png'
 */
 
 const useStyles = createStyles(theme => ({

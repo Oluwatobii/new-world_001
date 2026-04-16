@@ -10,8 +10,8 @@ import {
 } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useMediaQuery } from '@mantine/hooks'
-import CustomButton from '../../../Global/Button'
-import axios from 'axios'
+import CustomButton from '@/components/Global/Button'
+import { api } from '@/lib/api'
 
 interface ValuesProps {
   firstName: string
@@ -61,7 +61,6 @@ export default function RightSection() {
     const mail = {
       email: values.email,
       fullName: `${values.firstName} ${values.lastName}`,
-      to: `${import.meta.env.VITE_PERSONAL_EMAIL}`,
       bcc: [],
       host: 'new-world_001',
       subject: values.subject,
@@ -69,9 +68,14 @@ export default function RightSection() {
     }
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_HOUSTON}/api/hub/sendEmail`, mail, {
-        withCredentials: true
+      const res = await fetch(api.sendEmail, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(mail)
       })
+
       if (res.status >= 200 && res.status < 300) {
         form.reset()
       }

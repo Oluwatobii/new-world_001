@@ -1,5 +1,5 @@
 import { createStyles, SimpleGrid, Stack, Title, Text, Box } from '@mantine/core'
-import CustomIcon from '../../../Global/Icon'
+import CustomIcon from '@/components/Global/Icon'
 import { GoLocation } from 'react-icons/go'
 import { AiOutlineMail } from 'react-icons/ai'
 import { TbWorld } from 'react-icons/tb'

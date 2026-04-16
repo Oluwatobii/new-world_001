@@ -1,5 +1,5 @@
 import { createStyles, keyframes, Stack, Title, Text, Box, Group, useMantineColorScheme } from '@mantine/core'
-import CustomButton from '../../../Global/Button'
+import CustomButton from '@/components/Global/Button'
 
 const useStyles = createStyles(theme => ({
   text: {
@@ -41,7 +41,7 @@ const useStyles = createStyles(theme => ({
       marginLeft: '23%'
     }
   },
-  intrests: {
+  interests: {
     color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
     position: 'absolute',
     width: '100%',
@@ -126,7 +126,7 @@ export default function LeftSection() {
           <Title className={classes.name} order={1}>
             Oluwatobi A. Bello
           </Title>
-          <div className={classes.intrests}>
+          <div className={classes.interests}>
             <Box
               sx={theme => ({
                 position: 'absolute',
@@ -148,7 +148,7 @@ export default function LeftSection() {
               <br />
               MAN UNITED FAN.
               <br />
-              CAR ENTHUSIAT.
+              CAR ENTHUSIAST.
             </Box>
           </div>
         </div>
