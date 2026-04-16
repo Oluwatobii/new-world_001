@@ -8,6 +8,7 @@ body {
   /* padding: 5px; */
   overflow-x: hidden;
   font-family: 'IBM Plex Serif', serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -17,4 +18,21 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+#home,
+#stats,
+#competencies,
+#about,
+#portfolio,
+#resume,
+#contact {
+  scroll-margin-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
 }
