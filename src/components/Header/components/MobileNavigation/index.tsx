@@ -5,6 +5,7 @@ import Logo from '@/assets/svgs/Logo'
 import ColorSchemeToggle from '../ColorSchemeToggle'
 import { menuList } from '@/components/Global/menuList'
 import useActiveSection from '@/hooks/useActiveSection'
+import { scrollToMenuHash } from '@/lib/scrollToMenuHash'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -35,17 +36,6 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-function scrollToSectionAfterDrawer(hash: string) {
-  const id = hash.replace(/^#/, '')
-  const el = document.getElementById(id)
-  if (!el) return
-  const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' })
-  if (window.location.hash !== `#${id}`) {
-    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
-  }
-}
-
 export default function MobileNavigation() {
   const { classes, theme } = useStyles()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
@@ -54,7 +44,7 @@ export default function MobileNavigation() {
   const onNavLinkClick = (e: MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault()
     closeDrawer()
-    window.setTimeout(() => scrollToSectionAfterDrawer(hash), 280)
+    window.setTimeout(() => scrollToMenuHash(hash), 280)
   }
 
   return (

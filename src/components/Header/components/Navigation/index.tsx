@@ -1,8 +1,10 @@
+import type { MouseEvent } from 'react'
 import { createStyles, Header, Group } from '@mantine/core'
 import ColorSchemeToggle from '../ColorSchemeToggle'
 import Logo from '@/assets/svgs/Logo'
 import { menuList } from '@/components/Global/menuList'
 import useActiveSection from '@/hooks/useActiveSection'
+import { scrollToMenuHash } from '@/lib/scrollToMenuHash'
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -69,6 +71,10 @@ export default function Navigation() {
               key={menu.path}
               href={menu.path}
               className={`${classes.link} ${activeSection === menu.path ? classes.linkActive : ''}`.trim()}
+              onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault()
+                scrollToMenuHash(menu.path)
+              }}
             >
               {menu.name}
             </a>
