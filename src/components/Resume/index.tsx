@@ -7,6 +7,8 @@ import { api } from '@/lib/api'
 /** Used when the hub resume endpoint fails or returns no URL (same file as footer Resume link). */
 const FALLBACK_RESUME_URL = 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf'
 
+const RESUME_DOWNLOAD_FILENAME = 'Oluwatobi_A_Bello_SoftwareEngineer_Resume.pdf'
+
 const useStyles = createStyles(theme => ({
   wrapper: {
     position: 'relative',
@@ -121,6 +123,7 @@ export default function index() {
                   ? {
                       component: 'a',
                       href: resumeHref,
+                      download: RESUME_DOWNLOAD_FILENAME,
                       target: '_blank',
                       rel: 'noopener noreferrer',
                       sx: { width: 'fit-content' }
