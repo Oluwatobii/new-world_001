@@ -117,12 +117,7 @@ export default function Footer() {
         className={classes.link}
         component="a"
         href={link.link}
-        onClick={event => {
-          if (link.redirect) {
-            event.preventDefault()
-            window.open(link.link, '_blank')
-          }
-        }}
+        {...('target' in link && link.target ? { target: link.target, rel: link.rel } : {})}
       >
         {link.label}
       </Text>

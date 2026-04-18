@@ -6,7 +6,7 @@ export const json = (statusCode, body) => ({
   body: JSON.stringify(body)
 })
 
-const getRequiredEnv = name => {
+const readRequiredEnv = name => {
   const value = process.env[name]?.trim()
   if (!value) {
     throw new Error(`Missing required environment variable: ${name}`)
@@ -14,32 +14,26 @@ const getRequiredEnv = name => {
   return value
 }
 
-export const getHubConfig = () => {
-  const baseUrl = getRequiredEnv('HUB_BASE_URL')
-  const appId = getRequiredEnv('HUB_APP_ID')
+export const getConfig = () => {
+  const baseUrl = readRequiredEnv('HUB_BASE_URL')
+  const apiKey = readRequiredEnv('HUB_API_KEY')
   const personalEmail = process.env.PERSONAL_EMAIL?.trim()
 
   return {
-    appId,
+    apiKey,
     baseUrl: baseUrl.replace(/\/+$/, ''),
     personalEmail
   }
 }
 
-export const getHubHeaders = () => {
-  return {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-}
-
-export const hubFetch = async (path, init = {}) => {
-  const { baseUrl } = getHubConfig()
+export const request = async (path, init = {}) => {
+  const { baseUrl } = getConfig()
 
   return fetch(`${baseUrl}${path}`, {
     ...init,
     headers: {
-      ...getHubHeaders(),
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       ...(init.headers ?? {})
     }
   })

@@ -1,9 +1,9 @@
-import { getHubConfig, hubFetch, json } from '../lib/hub.js'
+import { getConfig, json, request } from '../lib/service.js'
 
 export const handler = async () => {
   try {
-    const { appId } = getHubConfig()
-    const response = await hubFetch(`/api/hub/portfolio/${appId}`)
+    const { apiKey } = getConfig()
+    const response = await request(`/api/hub/portfolio/${apiKey}`)
 
     if (!response.ok) {
       return json(response.status, { error: 'Failed to fetch portfolio data' })

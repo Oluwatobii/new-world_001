@@ -47,9 +47,10 @@ export const menuList = {
       title: 'Links',
       links: [
         {
-          redirect: true,
-          link: 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf',
-          label: 'Resume'
+          link: '/api/resume',
+          label: 'Resume',
+          target: '_blank',
+          rel: 'noopener noreferrer'
         },
         {
           link: '#portfolio',

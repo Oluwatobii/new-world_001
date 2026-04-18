@@ -1,4 +1,4 @@
-import { getHubConfig, hubFetch, json } from '../lib/hub.js'
+import { getConfig, json, request } from '../lib/service.js'
 
 export const handler = async event => {
   if (event.httpMethod !== 'POST') {
@@ -6,13 +6,13 @@ export const handler = async event => {
   }
 
   try {
-    const { personalEmail } = getHubConfig()
+    const { personalEmail } = getConfig()
     if (!personalEmail) {
       throw new Error('Missing required environment variable: PERSONAL_EMAIL')
     }
 
     const payload = JSON.parse(event.body || '{}')
-    const response = await hubFetch('/api/hub/sendEmail', {
+    const response = await request('/api/hub/sendEmail', {
       method: 'POST',
       body: JSON.stringify({
         ...payload,

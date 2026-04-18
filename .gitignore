@@ -17,7 +17,7 @@ dist-ssr
 # testing
 /coverage
 
-#enviroment
+#environment
 .env
 
 # production
@@ -40,3 +40,7 @@ dist-ssr
 
 #SFTP
 sftp-config.json
+# Local Netlify folder
+.netlify
+# Netlify CLI can drop this (it uses Deno internally); this app is Node/npm only.
+deno.lock

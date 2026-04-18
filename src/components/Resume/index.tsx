@@ -1,13 +1,7 @@
 import { BackgroundImage, createStyles, Box, Container, Title, useMantineColorScheme } from '@mantine/core'
-import { useEffect, useState } from 'react'
 import CustomButton from '@/components/Global/Button'
 import resumePath from '@/assets/images/resume-backgnd.png'
 import { api } from '@/lib/api'
-
-/** Used when the hub resume endpoint fails or returns no URL (same file as footer Resume link). */
-const FALLBACK_RESUME_URL = 'https://awss3resume.s3.ca-central-1.amazonaws.com/Resume.pdf'
-
-const RESUME_DOWNLOAD_FILENAME = 'Oluwatobi_A_Bello_SoftwareEngineer_Resume.pdf'
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -57,28 +51,6 @@ export default function index() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
-  const [resumeHref, setResumeHref] = useState<string | null>(null)
-
-  const getResumeUrl = async () => {
-    try {
-      const response = await fetch(api.resume)
-      if (!response.ok) {
-        throw new Error('Failed to fetch resume URL')
-      }
-
-      const payload: { url?: string } = await response.json()
-      const raw = payload.url
-      const url = typeof raw === 'string' && raw.trim() ? raw.trim() : undefined
-      setResumeHref(url ?? FALLBACK_RESUME_URL)
-    } catch (error) {
-      console.warn('[Resume] hub resume request failed, using fallback URL', error)
-      setResumeHref(FALLBACK_RESUME_URL)
-    }
-  }
-
-  useEffect(() => {
-    void getResumeUrl()
-  }, [])
 
   return (
     <Box className={classes.wrapper}>
@@ -118,18 +90,13 @@ export default function index() {
             <CustomButton
               text="Download"
               textColor={buttonTextColor}
-              options={
-                resumeHref
-                  ? {
-                      component: 'a',
-                      href: resumeHref,
-                      download: RESUME_DOWNLOAD_FILENAME,
-                      target: '_blank',
-                      rel: 'noopener noreferrer',
-                      sx: { width: 'fit-content' }
-                    }
-                  : { disabled: true, sx: { width: 'fit-content' } }
-              }
+              options={{
+                component: 'a',
+                href: api.resume,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+                sx: { width: 'fit-content' }
+              }}
             />
           </Box>
         </Container>
