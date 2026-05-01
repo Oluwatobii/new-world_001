@@ -13,7 +13,8 @@ export const portfolioData = {
       url: 'https://tracker.tbello.dev',
       description:
         'The Bug/Project Tracker web application helps in visualizing the progress of projects and potential bugs that are related.',
-      active: true
+      active: true,
+      stack: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Express']
     },
     {
       id: '2',
@@ -22,7 +23,8 @@ export const portfolioData = {
       color: '#DD7230',
       url: 'https://upbeat-hawking-a45e1b.netlify.app/',
       description: 'A React application that allows users to book and cancel interview on selected days of the week.',
-      active: true
+      active: true,
+      stack: ['JavaScript', 'React', 'Node.js', 'Ruby', 'PostgreSQL']
     },
     {
       id: '3',
@@ -32,7 +34,8 @@ export const portfolioData = {
       url: '/',
       description:
         'The Tutorama App makes it easy for students to instantly connect with expert tutros for in-person lessons.',
-      active: true
+      active: true,
+      stack: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS']
     },
     {
       id: '4',
@@ -42,7 +45,8 @@ export const portfolioData = {
       url: '/',
       description:
         'An app that lets you create quizzes and share them between friends. The creator of the quiz can view and share all the results at the end of the quiz.',
-      active: true
+      active: true,
+      stack: ['JavaScript', 'React', 'Firebase', 'Node.js', 'MongoDB']
     }
   ]
 }

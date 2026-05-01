@@ -8,6 +8,7 @@ export interface PortfolioProject {
   color: string
   url: string
   active: boolean
+  stack?: string[]
 }
 
 export interface PortfolioStat {
