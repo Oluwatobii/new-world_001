@@ -9,9 +9,10 @@ export const handler = async () => {
       return json(response.status, { error: 'Failed to fetch portfolio data' })
     }
 
-    const payload = await response.json()
-    const activeProjects = (payload?.data?.projects ?? []).filter(project => project.active)
-    const activeStats = (payload?.data?.stats ?? []).filter(stat => stat.active)
+    const data = await response.json()
+
+    const activeProjects = (data?.projects ?? []).filter(project => project.active)
+    const activeStats = (data?.stats ?? []).filter(stat => stat.active)
 
     return json(200, {
       projects: activeProjects,
