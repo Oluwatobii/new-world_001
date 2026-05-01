@@ -64,7 +64,7 @@ const useStyles = createStyles(theme => ({
 
   carouselWrapper: {
     position: 'relative',
-    paddingBottom: '4.5rem'
+    paddingBottom: '6rem'
   }
 }))
 
@@ -73,6 +73,7 @@ export default function index() {
   const { colorScheme } = useMantineColorScheme()
   const [data, setData] = useState<PortfolioProject[]>([])
   const isTabletSize = useMediaQuery('(max-width: 62em)')
+  const isMobileSize = useMediaQuery('(max-width: 48em)')
   const buttonTextColor = colorScheme === 'dark' ? 'dark' : 'white.0'
 
   const getData = async () => {
@@ -133,7 +134,16 @@ export default function index() {
           styles={theme => ({
             viewport: { overflow: 'unset', overflowX: 'clip' },
             controls: {
-              insetInline: isTabletSize ? 8 : -18
+              insetInline: isTabletSize ? 8 : -18,
+              ...(isMobileSize
+                ? {
+                    insetInline: 0,
+                    bottom: -58,
+                    top: 'auto',
+                    justifyContent: 'center',
+                    gap: theme.spacing.sm
+                  }
+                : {})
             },
             control: {
               width: 42,
@@ -149,7 +159,7 @@ export default function index() {
               }
             },
             indicators: {
-              bottom: -28
+              bottom: isMobileSize ? -78 : -28
             },
             indicator: {
               width: 10,
