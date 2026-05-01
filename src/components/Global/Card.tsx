@@ -9,7 +9,11 @@ const useStyles = createStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    transition: 'transform .22s ease, box-shadow .22s ease'
+    transition: 'transform .22s ease, box-shadow .22s ease',
+    overflow: 'hidden',
+    backfaceVisibility: 'hidden',
+    WebkitBackfaceVisibility: 'hidden',
+    transform: 'translateZ(0)'
   },
 
   imageText: {
@@ -97,7 +101,7 @@ export default function CustomCard({
                 boxShadow: theme.shadows.xl,
                 color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
                 backgroundColor: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
-              }),
+              })
             }
           }
           return {
@@ -110,6 +114,7 @@ export default function CustomCard({
             sx={() => {
               if (image) {
                 return {
+                  position: 'relative',
                   '::before': {
                     content: '""',
                     position: 'absolute',
@@ -118,8 +123,9 @@ export default function CustomCard({
                     background: imageOverLayColor,
                     zIndex: 50,
                     width: '100%',
-                    height: '45%',
-                    opacity: 0.5
+                    height: '100%',
+                    opacity: 0.5,
+                    pointerEvents: 'none'
                   }
                 }
               }

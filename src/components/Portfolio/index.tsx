@@ -79,13 +79,17 @@ const useStyles = createStyles(theme => ({
   },
   flipCardRoot: {
     position: 'relative',
-    perspective: 1000
+    perspective: 1000,
+    transformStyle: 'preserve-3d',
+    WebkitTransformStyle: 'preserve-3d'
   },
   flipCardInner: {
     position: 'relative',
     height: 450,
     transition: 'transform 420ms ease',
-    transformStyle: 'preserve-3d'
+    transformStyle: 'preserve-3d',
+    WebkitTransformStyle: 'preserve-3d',
+    willChange: 'transform'
   },
   face: {
     position: 'absolute',
@@ -94,10 +98,15 @@ const useStyles = createStyles(theme => ({
     bottom: 0,
     left: 0,
     backfaceVisibility: 'hidden',
-    height: '100%'
+    WebkitBackfaceVisibility: 'hidden',
+    height: '100%',
+    transform: 'translateZ(0)'
+  },
+  faceFront: {
+    transform: 'rotateY(0deg) translateZ(0)'
   },
   faceBack: {
-    transform: 'rotateY(180deg)'
+    transform: 'rotateY(180deg) translateZ(0)'
   },
   stackPanel: {
     height: 400,
@@ -171,109 +180,112 @@ export default function index() {
           onMouseEnter={() => hasStack && !isMobileSize && setFlippedCards(prev => ({ ...prev, [item.id]: true }))}
           onMouseLeave={() => hasStack && !isMobileSize && setFlippedCards(prev => ({ ...prev, [item.id]: false }))}
         >
-        <Box
-          className={classes.flipCardInner}
-          sx={{
-            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
-          }}
-        >
-          <Box className={classes.face}>
-            <CustomCard
-              title={item.title}
-              Button={
-                isMobileSize ? (
+          <Box
+            className={classes.flipCardInner}
+            sx={{
+              transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+            }}
+          >
+            <Box className={`${classes.face} ${classes.faceFront}`} sx={{ pointerEvents: isFlipped ? 'none' : 'auto' }}>
+              <CustomCard
+                title={item.title}
+                Button={
+                  isMobileSize ? (
+                    <Group spacing="xs">
+                      <CustomButton
+                        text="Launch"
+                        textColor={buttonTextColor}
+                        options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
+                      />
+                      {hasStack ? (
+                        <CustomButton
+                          text="Stack"
+                          textColor={buttonTextColor}
+                          options={{ onClick: () => toggleCard(item.id) }}
+                        />
+                      ) : null}
+                    </Group>
+                  ) : (
+                    <CustomButton
+                      text="Launch"
+                      textColor={buttonTextColor}
+                      options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
+                    />
+                  )
+                }
+                image={
+                  item.image === ''
+                    ? 'https://res.cloudinary.com/otbi/image/upload/v1668442081/otbi/houston/portfolio/coming-soon_nuh1xf.jpg'
+                    : item.image
+                }
+                imageOverLayColor={item.color}
+                height={'400px'}
+                titleAlign="initial"
+                description={item.description}
+              />
+            </Box>
+
+            {hasStack ? (
+              <Box
+                className={`${classes.face} ${classes.faceBack}`}
+                sx={{ pointerEvents: isFlipped ? 'auto' : 'none' }}
+              >
+                <Paper
+                  className={classes.stackPanel}
+                  bg={colorScheme === 'dark' ? 'dark.7' : 'white'}
+                  sx={{
+                    backgroundImage: `linear-gradient(170deg, ${item.color}24 0%, transparent 55%)`
+                  }}
+                >
+                  <Stack spacing="md">
+                    <Box className={classes.stackHeader}>
+                      <Box>
+                        <Text size="xs" color="dimmed" className={classes.stackLabel}>
+                          Technology
+                        </Text>
+                        <Title order={3}>{item.title} Stack</Title>
+                      </Box>
+                      <Text size="sm" color="dimmed" className={classes.stackCount}>
+                        {stack.length} tools
+                      </Text>
+                    </Box>
+                    <Group className={classes.stackBadges}>
+                      {stack.map(tech => (
+                        <Badge
+                          key={`${item.id}-${tech}`}
+                          variant="filled"
+                          sx={{
+                            backgroundColor: `${item.color}22`,
+                            color: colorScheme === 'dark' ? '#fff' : '#1f2937',
+                            border: `1px solid ${item.color}66`
+                          }}
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Group>
+                  </Stack>
+                </Paper>
+                <Box className={classes.stackFooter}>
                   <Group spacing="xs">
                     <CustomButton
                       text="Launch"
                       textColor={buttonTextColor}
                       options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
                     />
-                    {hasStack ? (
+                    {isMobileSize ? (
                       <CustomButton
-                        text="Stack"
+                        text="Overview"
                         textColor={buttonTextColor}
                         options={{ onClick: () => toggleCard(item.id) }}
                       />
                     ) : null}
                   </Group>
-                ) : (
-                  <CustomButton
-                    text="Launch"
-                    textColor={buttonTextColor}
-                    options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
-                  />
-                )
-              }
-              image={
-                item.image === ''
-                  ? 'https://res.cloudinary.com/otbi/image/upload/v1668442081/otbi/houston/portfolio/coming-soon_nuh1xf.jpg'
-                  : item.image
-              }
-              imageOverLayColor={item.color}
-              height={'400px'}
-              titleAlign="initial"
-              description={item.description}
-            />
-          </Box>
-
-          {hasStack ? (
-            <Box className={`${classes.face} ${classes.faceBack}`}>
-              <Paper
-                className={classes.stackPanel}
-                bg={colorScheme === 'dark' ? 'dark.7' : 'white'}
-                sx={{
-                  backgroundImage: `linear-gradient(170deg, ${item.color}24 0%, transparent 55%)`
-                }}
-              >
-                <Stack spacing="md">
-                  <Box className={classes.stackHeader}>
-                    <Box>
-                      <Text size="xs" color="dimmed" className={classes.stackLabel}>
-                        Technology
-                      </Text>
-                      <Title order={3}>{item.title} Stack</Title>
-                    </Box>
-                    <Text size="sm" color="dimmed" className={classes.stackCount}>
-                      {stack.length} tools
-                    </Text>
-                  </Box>
-                  <Group className={classes.stackBadges}>
-                    {stack.map(tech => (
-                      <Badge
-                        key={`${item.id}-${tech}`}
-                        variant="filled"
-                        sx={{
-                          backgroundColor: `${item.color}22`,
-                          color: colorScheme === 'dark' ? '#fff' : '#1f2937',
-                          border: `1px solid ${item.color}66`
-                        }}
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </Group>
-                </Stack>
-              </Paper>
-              <Box className={classes.stackFooter}>
-                <Group spacing="xs">
-                  <CustomButton
-                    text="Launch"
-                    textColor={buttonTextColor}
-                    options={{ onClick: () => window.open(`${item.url ? item.url : '/'}`, '_blank') }}
-                  />
-                  {isMobileSize ? (
-                    <CustomButton
-                      text="Back"
-                      textColor={buttonTextColor}
-                      options={{ onClick: () => toggleCard(item.id) }}
-                    />
-                  ) : null}
-                </Group>
+                </Box>
               </Box>
-            </Box>
-          ) : null}
+            ) : null}
+          </Box>
         </Box>
-      </Box>
       </Carousel.Slide>
     )
   })
