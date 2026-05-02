@@ -9,7 +9,10 @@ const useStyles = createStyles(theme => ({
   stat: {
     display: 'flex',
     marginTop: '5rem',
-    textAlign: 'center'
+    textAlign: 'center',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: theme.spacing.xl
+    }
   }
 }))
 
@@ -18,21 +21,50 @@ export default function StatGraph({ subject, stat }: StatProps) {
 
   return (
     <Center
-      style={{ width: '250px', height: '150px' }}
       className={classes.stat}
       sx={theme => ({
+        width: 250,
+        height: 150,
         borderLeft: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         borderBottom: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         color: theme.colorScheme === 'dark' ? theme.colors.white[0] : theme.colors.dark,
         [theme.fn.smallerThan('sm')]: {
-          width: '50px',
-          height: '35px'
+          width: 148,
+          height: 102
+        },
+        [theme.fn.smallerThan('xs')]: {
+          width: 128,
+          height: 92
         }
       })}
     >
-      <Stack align="center">
-        <Title>{stat}</Title>
-        <Text size="md">{subject}</Text>
+      <Stack align="center" spacing={4}>
+        <Title
+          order={2}
+          sx={theme => ({
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.lg
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.md
+            }
+          })}
+        >
+          {stat}
+        </Title>
+        <Text
+          size="md"
+          sx={theme => ({
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.sm
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.xs
+            }
+          })}
+        >
+          {subject}
+        </Text>
       </Stack>
     </Center>
   )

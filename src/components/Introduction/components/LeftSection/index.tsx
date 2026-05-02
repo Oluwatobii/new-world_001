@@ -23,15 +23,31 @@ const useStyles = createStyles(theme => ({
     marginTop: '20px',
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
-    textAlign: 'initial'
+    textAlign: 'initial',
+    [theme.fn.smallerThan('sm')]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+      marginTop: theme.spacing.sm
+    }
   },
   bannerText: {
     color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
     position: 'relative',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translateX(-50%)',
     left: '25%',
-    marginTop: '25px',
-    width: '100%'
+    marginTop: '15px',
+    marginBottom: '10px',
+    width: '100%',
+    [theme.fn.smallerThan('md')]: {
+      marginTop: theme.spacing.xs
+    },
+    [theme.fn.smallerThan('sm')]: {
+      left: 0,
+      transform: 'none',
+      marginTop: theme.spacing.xs,
+      marginBottom: theme.spacing.sm,
+      width: '100%'
+    }
   },
   name: {
     display: 'flex',
@@ -44,31 +60,41 @@ const useStyles = createStyles(theme => ({
     paddingRight: theme.spacing.md,
     textAlign: 'initial',
     [theme.fn.smallerThan('lg')]: {
-      marginTop: '35px',
+      marginTop: theme.spacing.xs,
       marginLeft: '24.9%'
     },
     [theme.fn.smallerThan('md')]: {
-      marginTop: '30px',
+      marginTop: theme.spacing.xs,
       marginLeft: '24.9%'
     },
     [theme.fn.smallerThan('sm')]: {
-      marginTop: '45px',
-      marginLeft: '23%'
+      marginTop: theme.spacing.xs,
+      marginLeft: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
+      fontSize: theme.fontSizes.xl
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: theme.fontSizes.lg
     }
   },
   interests: {
     color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
-    position: 'absolute',
+    position: 'static',
     width: '100%',
-    height: `${ROLE_LINE_HEIGHT}px`,
-    overflow: 'hidden',
-    top: '115%',
-    left: '26.5%',
+    marginTop: theme.spacing.xs,
+    marginLeft: '26.5%',
     textAlign: 'initial',
     opacity: 1,
     fontWeight: 'bold',
+    boxSizing: 'border-box',
     [theme.fn.smallerThan('xl')]: {
-      left: '26.9%'
+      marginLeft: '26.9%'
+    },
+    [theme.fn.smallerThan('sm')]: {
+      marginLeft: 0,
+      paddingLeft: 0,
+      paddingRight: 0
     }
   }
 }))
@@ -133,17 +159,32 @@ export default function LeftSection() {
           marginTop: '60px'
         },
         [theme.fn.smallerThan('sm')]: {
-          marginTop: '0px'
+          marginTop: theme.spacing.xs,
+          height: 'auto',
+          minHeight: 0,
+          justifyContent: 'flex-start'
         },
         [theme.fn.smallerThan('xs')]: {
-          marginTop: '80px'
+          marginTop: theme.spacing.xs
         }
       })}
     >
       <Box
         sx={theme => ({
           padding: '3.5rem',
-          color: theme.colorScheme === 'dark' ? theme.white : theme.black
+          color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+          [theme.fn.smallerThan('sm')]: {
+            paddingTop: theme.spacing.md,
+            paddingBottom: theme.spacing.sm,
+            paddingLeft: theme.spacing.md,
+            paddingRight: theme.spacing.md
+          },
+          [theme.fn.smallerThan('xs')]: {
+            paddingTop: theme.spacing.sm,
+            paddingBottom: theme.spacing.sm,
+            paddingLeft: theme.spacing.sm,
+            paddingRight: theme.spacing.sm
+          }
         })}
       >
         <Text
@@ -157,7 +198,11 @@ export default function LeftSection() {
               marginLeft: '5px'
             },
             [theme.fn.smallerThan('sm')]: {
-              marginLeft: 0
+              marginLeft: 0,
+              fontSize: theme.fontSizes.sm
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.xs
             }
           })}
         >
@@ -170,16 +215,38 @@ export default function LeftSection() {
           <div className={classes.interests}>
             <Box
               sx={theme => ({
-                position: 'absolute',
-                fontSize: '25px',
+                position: 'relative',
+                fontSize: 25,
                 lineHeight: `${ROLE_LINE_HEIGHT}px`,
                 display: 'inline-flex',
                 alignItems: 'center',
-                whiteSpace: 'nowrap',
-                left: 0
+                flexWrap: 'wrap',
+                maxWidth: '100%',
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+                [theme.fn.smallerThan('sm')]: {
+                  fontSize: theme.fontSizes.md,
+                  lineHeight: 1.35,
+                  letterSpacing: '0.01em'
+                },
+                [theme.fn.smallerThan('xs')]: {
+                  fontSize: theme.fontSizes.sm,
+                  lineHeight: 1.4
+                }
               })}
             >
-              <Text inherit span sx={{ display: 'inline-block', fontWeight: 700, letterSpacing: '0.02em' }}>
+              <Text
+                inherit
+                span
+                sx={theme => ({
+                  display: 'inline',
+                  fontWeight: 700,
+                  letterSpacing: '0.02em',
+                  [theme.fn.smallerThan('xs')]: {
+                    letterSpacing: '0.01em'
+                  }
+                })}
+              >
                 {typedRole}
               </Text>
               <Text
@@ -200,13 +267,21 @@ export default function LeftSection() {
           className={classes.text}
           size="md"
           sx={theme => ({
-            marginTop: '30px',
+            marginTop: theme.spacing.md,
             textAlign: 'justify',
             textJustify: 'inter-word',
             width: '85%',
+            [theme.fn.largerThan('sm')]: {
+              marginTop: theme.spacing.lg
+            },
             [theme.fn.smallerThan('sm')]: {
+              marginTop: theme.spacing.md,
               textAlign: 'left',
-              width: '100%'
+              width: '100%',
+              fontSize: theme.fontSizes.sm
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.xs
             }
           })}
         >
@@ -214,9 +289,15 @@ export default function LeftSection() {
           people actually use. Collaborative, thorough, and mindful of maintainability.
         </Text>
         <Group
-          sx={() => ({
-            padding: '1rem',
-            marginTop: '30px'
+          sx={theme => ({
+            paddingTop: theme.spacing.sm,
+            paddingBottom: theme.spacing.sm,
+            marginTop: theme.spacing.md,
+            [theme.fn.smallerThan('sm')]: {
+              paddingTop: theme.spacing.xs,
+              paddingBottom: theme.spacing.xs,
+              marginTop: theme.spacing.sm
+            }
           })}
         >
           <a href="#stats">

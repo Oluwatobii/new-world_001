@@ -17,26 +17,28 @@ export default function index() {
       ]}
       sx={theme => ({
         [theme.fn.smallerThan('md')]: {
-          marginTop: '-10rem'
+          marginTop: theme.spacing.sm
         },
         [theme.fn.smallerThan('sm')]: {
-          marginTop: '10rem'
+          marginTop: theme.spacing.sm
         },
         [theme.fn.smallerThan('xs')]: {
-          marginTop: '45rem'
+          marginTop: theme.spacing.xs
         }
       })}
     >
-      <Box
-        sx={() => ({
-          display: 'flex',
-          justifyContent: 'flex-end',
-          width: '95%',
-          marginTop: '20px'
-        })}
-      >
-        {!isTabletSize ? <LeftSection /> : null}
-      </Box>
+      {!isTabletSize ? (
+        <Box
+          sx={() => ({
+            display: 'flex',
+            justifyContent: 'flex-end',
+            width: '95%',
+            marginTop: '20px'
+          })}
+        >
+          <LeftSection />
+        </Box>
+      ) : null}
       <Box
         sx={theme => ({
           display: 'flex',
@@ -44,15 +46,15 @@ export default function index() {
           maxWidth: '38rem',
           marginTop: '20px',
           [theme.fn.smallerThan('md')]: {
-            maxWidth: '70rem'
+            maxWidth: '100%'
           },
           [theme.fn.smallerThan('sm')]: {
-            marginTop: '-210px',
-            maxWidth: '40rem'
+            marginTop: theme.spacing.sm,
+            maxWidth: '100%'
           },
           [theme.fn.smallerThan('xs')]: {
-            marginTop: '-150px',
-            maxWidth: '40rem'
+            marginTop: theme.spacing.sm,
+            maxWidth: '100%'
           }
         })}
       >

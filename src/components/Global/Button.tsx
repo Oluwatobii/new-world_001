@@ -1,4 +1,5 @@
 import { createStyles, Button, Text, useMantineColorScheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 
 interface ButtonProps {
   text: string
@@ -35,12 +36,24 @@ export default function CustomButton({
 }: ButtonProps) {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
+  const isNarrow = useMediaQuery('(max-width: 48em)')
+  const effectiveSize: ButtonProps['size'] = (() => {
+    if (!isNarrow) return size
+    const down: Record<NonNullable<ButtonProps['size']>, ButtonProps['size']> = {
+      xl: 'lg',
+      lg: 'md',
+      md: 'sm',
+      sm: 'xs',
+      xs: 'xs'
+    }
+    return down[size]
+  })()
 
   const defaultButtonColor = colorScheme === 'dark' ? 'white.0' : 'dark'
   const color = buttonColor ? buttonColor : defaultButtonColor
 
   return (
-    <Button color={color} size={size} className={classes.button} {...options}>
+    <Button color={color} size={effectiveSize} className={classes.button} {...options}>
       <Text color={textColor}>{text}</Text>
     </Button>
   )

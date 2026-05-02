@@ -9,6 +9,12 @@ const useStyles = createStyles(theme => ({
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: theme.fontSizes.xl
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: theme.fontSizes.lg
+    },
 
     '&::before': {
       content: '""',
@@ -23,10 +29,14 @@ const useStyles = createStyles(theme => ({
         left: 20
       },
       [theme.fn.smallerThan('sm')]: {
-        left: 20
+        left: theme.spacing.md,
+        width: '28%',
+        maxWidth: 120
       },
       [theme.fn.smallerThan('xs')]: {
-        left: 15
+        left: theme.spacing.sm,
+        width: '24%',
+        maxWidth: 96
       }
     }
   },
@@ -40,7 +50,11 @@ const useStyles = createStyles(theme => ({
     textAlign: 'justify',
     textJustify: 'inter-word',
     [theme.fn.smallerThan('sm')]: {
-      textAlign: 'left'
+      textAlign: 'left',
+      fontSize: theme.fontSizes.sm
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: theme.fontSizes.xs
     }
   }
 }))
@@ -76,7 +90,15 @@ export default function RightSection() {
             marginBottom: theme.spacing.xs / 2,
             paddingLeft: theme.spacing.md,
             paddingRight: theme.spacing.md,
-            marginTop: '35px'
+            marginTop: '35px',
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.sm,
+              lineHeight: 1.35
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.xs,
+              lineHeight: 1.4
+            }
           })}
         >
           FROM MECHANICAL ENGINEERING TO FULL-STACK DEVELOPMENT.

@@ -1,4 +1,5 @@
 import { createStyles, SimpleGrid, Stack, Title, Text, Box } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import CustomIcon from '@/components/Global/Icon'
 import { GoLocation } from 'react-icons/go'
 import { AiOutlineMail } from 'react-icons/ai'
@@ -18,6 +19,8 @@ const useStyles = createStyles(theme => ({
 
 export default function LeftSection() {
   const { classes } = useStyles()
+  const isNarrow = useMediaQuery('(max-width: 48em)')
+  const iconPx = isNarrow ? 34 : 45
 
   return (
     <Stack
@@ -45,12 +48,29 @@ export default function LeftSection() {
           size="md"
           sx={theme => ({
             fontWeight: 800,
-            color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
+            color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.sm
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.xs
+            }
           })}
         >
           GET IN TOUCH
         </Text>
-        <Title className={classes.text} order={1}>
+        <Title
+          className={classes.text}
+          order={1}
+          sx={theme => ({
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.xl
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.lg
+            }
+          })}
+        >
           I&apos;d love to hear from you
         </Title>
 
@@ -61,10 +81,10 @@ export default function LeftSection() {
             textAlign: 'center'
           })}
         >
-          <CustomIcon Icon={<GoLocation size={'45px'} />} title="Location" text="Ontario, Canada" />
-          <CustomIcon Icon={<AiOutlineMail size={'45px'} />} title="Email Address" text="support@otbi.me" />
-          <CustomIcon Icon={<TbWorld size={'45px'} />} title="Website" text="https://tbello.dev" />
-          <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1 (xxx) xxx-xxxx" />
+          <CustomIcon Icon={<GoLocation size={iconPx} />} title="Location" text="Ontario, Canada" />
+          <CustomIcon Icon={<AiOutlineMail size={iconPx} />} title="Email Address" text="support@otbi.me" />
+          <CustomIcon Icon={<TbWorld size={iconPx} />} title="Website" text="https://tbello.dev" />
+          <CustomIcon Icon={<BsTelephone size={iconPx} />} title="Telephone" text="+1 (xxx) xxx-xxxx" />
         </SimpleGrid>
       </Box>
     </Stack>

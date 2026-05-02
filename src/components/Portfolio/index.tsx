@@ -43,6 +43,12 @@ const useStyles = createStyles(theme => ({
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: theme.fontSizes.xl
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: theme.fontSizes.lg
+    },
 
     '&::before': {
       content: '""',
@@ -52,18 +58,19 @@ const useStyles = createStyles(theme => ({
       borderRadius: '4px',
       backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941',
       bottom: 0,
-      left: 470,
+      left: '50%',
+      transform: 'translateX(-50%)',
       [theme.fn.smallerThan('md')]: {
-        left: 290,
-        width: '25%'
+        width: '22%',
+        maxWidth: 180
       },
       [theme.fn.smallerThan('sm')]: {
-        left: 220,
-        width: '30%'
+        width: '32%',
+        maxWidth: 140
       },
       [theme.fn.smallerThan('xs')]: {
-        left: 80,
-        width: '50%'
+        width: '36%',
+        maxWidth: 120
       }
     }
   },

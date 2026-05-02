@@ -34,14 +34,24 @@ export default function CustomIcon({ Icon, title, text }: IconProps) {
         <Title
           order={3}
           sx={theme => ({
-            color: theme.colorScheme === 'dark' ? 'dark' : 'white.0'
+            color: theme.colorScheme === 'dark' ? 'dark' : 'white.0',
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.md
+            },
+            [theme.fn.smallerThan('xs')]: {
+              fontSize: theme.fontSizes.sm
+            }
           })}
         >
           {title}
         </Title>
         <Text
+          size="sm"
           sx={theme => ({
-            color: theme.colorScheme === 'dark' ? theme.colors.gray[4] : theme.colors.gray[6]
+            color: theme.colorScheme === 'dark' ? theme.colors.gray[4] : theme.colors.gray[6],
+            [theme.fn.smallerThan('sm')]: {
+              fontSize: theme.fontSizes.xs
+            }
           })}
         >
           {text}

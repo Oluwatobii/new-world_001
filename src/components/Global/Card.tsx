@@ -1,4 +1,5 @@
 import { Card, Text, createStyles, Box, Title, useMantineColorScheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 
 const useStyles = createStyles(theme => ({
   card: {
@@ -26,7 +27,15 @@ const useStyles = createStyles(theme => ({
     top: '7rem',
     zIndex: 60,
     right: '0px',
-    width: '55%'
+    width: '55%',
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: '1.15rem',
+      top: '5.5rem'
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: '1rem',
+      top: '5rem'
+    }
   },
 
   text: {
@@ -46,7 +55,15 @@ const useStyles = createStyles(theme => ({
     paddingRight: theme.spacing.md,
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
     width: '100%',
-    minHeight: 56
+    minHeight: 56,
+    [theme.fn.smallerThan('sm')]: {
+      minHeight: 44,
+      fontSize: theme.fontSizes.lg
+    },
+    [theme.fn.smallerThan('xs')]: {
+      minHeight: 40,
+      fontSize: theme.fontSizes.md
+    }
   },
 
   footer: {
@@ -86,6 +103,9 @@ export default function CustomCard({
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
   const textColor = colorScheme === 'dark' ? 'dark' : 'white.0'
+  const isNarrow = useMediaQuery('(max-width: 48em)')
+  const cardHeight =
+    isNarrow && height ? `min(${height}, calc(100vw - 1.5rem))` : height
 
   return (
     <>
@@ -99,7 +119,7 @@ export default function CustomCard({
         sx={theme => {
           if (hover) {
             return {
-              height: height,
+              height: cardHeight,
               ...theme.fn.hover({
                 transform: 'translateY(-4px)',
                 boxShadow: theme.shadows.xl,
@@ -109,7 +129,7 @@ export default function CustomCard({
             }
           }
           return {
-            height: height
+            height: cardHeight
           }
         }}
       >
@@ -156,13 +176,19 @@ export default function CustomCard({
                 component="img"
                 src={image}
                 alt={title || 'project image'}
-                sx={{
+                sx={theme => ({
                   width: '100%',
                   height: '180px',
                   display: 'block',
                   objectFit: 'cover',
-                  objectPosition: 'center'
-                }}
+                  objectPosition: 'center',
+                  [theme.fn.smallerThan('sm')]: {
+                    height: 150
+                  },
+                  [theme.fn.smallerThan('xs')]: {
+                    height: 132
+                  }
+                })}
               />
             ) : null}
             {Icon ? Icon : null}
@@ -184,12 +210,19 @@ export default function CustomCard({
             color="dimmed"
             className={classes.text}
             lineClamp={4}
-            sx={() => ({
+            sx={theme => ({
               marginTop: Icon ? '20px' : '0px',
               textAlign: 'left',
               lineHeight: 1.6,
               width: '100%',
-              minHeight: 102
+              minHeight: 102,
+              [theme.fn.smallerThan('sm')]: {
+                minHeight: 76,
+                fontSize: theme.fontSizes.xs
+              },
+              [theme.fn.smallerThan('xs')]: {
+                minHeight: 68
+              }
             })}
           >
             {description}

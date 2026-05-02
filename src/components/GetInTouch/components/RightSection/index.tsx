@@ -36,6 +36,8 @@ export default function RightSection() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
   const isTabletSize = useMediaQuery('(max-width: 62em)')
+  const isNarrow = useMediaQuery('(max-width: 48em)')
+  const fieldSize = isNarrow ? 'md' : 'lg'
 
   const buttonColor = colorScheme === 'dark' ? 'brand.0' : 'brand.1'
   const textColor = colorScheme === 'dark' ? 'dark' : 'white.0'
@@ -94,7 +96,11 @@ export default function RightSection() {
               backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#fff',
               marginTop: '5px',
               [theme.fn.smallerThan('sm')]: {
-                marginTop: '-90px'
+                marginTop: '-90px',
+                fontSize: theme.fontSizes.xl
+              },
+              [theme.fn.smallerThan('xs')]: {
+                fontSize: theme.fontSizes.lg
               }
             })}
           >
@@ -106,7 +112,7 @@ export default function RightSection() {
             label="First Name"
             placeholder="First name"
             name="firstName"
-            size="lg"
+            size={fieldSize}
             variant="filled"
             required
             {...form.getInputProps('firstName')}
@@ -115,7 +121,7 @@ export default function RightSection() {
             label="Last Name"
             placeholder="Last name"
             name="lastName"
-            size="lg"
+            size={fieldSize}
             variant="filled"
             required
             {...form.getInputProps('lastName')}
@@ -126,7 +132,7 @@ export default function RightSection() {
           <TextInput
             label="Email"
             required
-            size="lg"
+            size={fieldSize}
             placeholder="Email Address"
             name="email"
             variant="filled"
@@ -139,7 +145,7 @@ export default function RightSection() {
             placeholder="Subject"
             name="subject"
             variant="filled"
-            size="lg"
+            size={fieldSize}
             {...form.getInputProps('subject')}
           />
         </SimpleGrid>
@@ -151,7 +157,7 @@ export default function RightSection() {
           placeholder="Your Message Here..."
           maxRows={15}
           minRows={9}
-          size="lg"
+          size={fieldSize}
           name="message"
           variant="filled"
           {...form.getInputProps('message')}
@@ -160,7 +166,7 @@ export default function RightSection() {
         <Group position="left" mt="xl">
           <CustomButton
             text="Send Message"
-            size="lg"
+            size={isNarrow ? 'md' : 'lg'}
             buttonColor={buttonColor}
             textColor={textColor}
             options={{ type: 'submit' }}

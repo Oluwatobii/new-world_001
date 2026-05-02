@@ -9,14 +9,22 @@ const useStyles = createStyles(theme => ({
     marginTop: '20px',
     paddingTop: theme.spacing.xl * 2,
     paddingBottom: theme.spacing.xl * 2,
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    [theme.fn.smallerThan('sm')]: {
+      paddingTop: theme.spacing.lg,
+      paddingBottom: theme.spacing.md
+    }
   },
   main: {
     marginTop: '20px',
     gridGap: '2rem',
     height: '400px',
     paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md
+    paddingRight: theme.spacing.md,
+    [theme.fn.smallerThan('md')]: {
+      height: 'auto',
+      minHeight: 0
+    }
   },
   container: {
     display: 'flex',
@@ -25,7 +33,13 @@ const useStyles = createStyles(theme => ({
   },
   title: {
     marginTop: theme.spacing.sm,
-    marginBottom: theme.spacing.xl * 1.5
+    marginBottom: theme.spacing.xl * 1.5,
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: theme.fontSizes.xl
+    },
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: theme.fontSizes.lg
+    }
   },
 
   text: {
@@ -46,13 +60,12 @@ export default function index() {
       className={classes.wrapper}
       sx={theme => ({
         [theme.fn.smallerThan('md')]: {
-          height: '68rem'
+          height: 'auto',
+          minHeight: 0,
+          paddingBottom: theme.spacing.lg
         },
         [theme.fn.smallerThan('sm')]: {
-          height: '90rem'
-        },
-        [theme.fn.smallerThan('xs')]: {
-          height: '50rem'
+          paddingBottom: theme.spacing.sm
         }
       })}
     >
@@ -61,7 +74,13 @@ export default function index() {
         sx={theme => ({
           fontWeight: 800,
           textAlign: 'center',
-          color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1]
+          color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
+          [theme.fn.smallerThan('sm')]: {
+            fontSize: theme.fontSizes.sm
+          },
+          [theme.fn.smallerThan('xs')]: {
+            fontSize: theme.fontSizes.xs
+          }
         })}
       >
         WHAT I DO

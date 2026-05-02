@@ -16,34 +16,26 @@ const useStyles = createStyles(theme => ({
     paddingBottom: theme.spacing.xl * 2
   },
   image: {
+    position: 'relative',
     marginTop: '3rem',
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     paddingTop: theme.spacing.xl * 2,
     paddingBottom: theme.spacing.xl * 2,
+    overflow: 'hidden',
     '::before': {
       content: '""',
       position: 'absolute',
-      left: '1rem',
-      top: '5.85rem',
+      inset: 0,
+      zIndex: 0,
       background: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
-      width: '98.1%',
-      height: '76.3%',
       opacity: 0.59,
-
-      [theme.fn.smallerThan('lg')]: {
-        width: '97.3%',
-        height: '76%'
-      },
-      [theme.fn.smallerThan('md')]: {
-        width: '96%',
-        height: '76%'
-      },
-      [theme.fn.smallerThan('xs')]: {
-        width: '91.3%',
-        height: '77.7%'
-      }
+      pointerEvents: 'none'
     }
+  },
+  imageContent: {
+    position: 'relative',
+    zIndex: 1
   }
 }))
 
@@ -56,6 +48,7 @@ export default function index() {
     <Box className={classes.wrapper}>
       <BackgroundImage src={resumePath} radius="xs" className={classes.image}>
         <Container
+          className={classes.imageContent}
           size="sm"
           sx={theme => ({
             marginTop: '3rem',
@@ -79,11 +72,12 @@ export default function index() {
           <Box
             sx={theme => ({
               marginTop: '4.5rem',
-              marginLeft: '17rem',
-              width: 'fit-content',
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
               cursor: 'pointer',
-              [theme.fn.smallerThan('xs')]: {
-                marginLeft: '5rem'
+              [theme.fn.smallerThan('sm')]: {
+                marginTop: theme.spacing.xl
               }
             })}
           >
