@@ -93,6 +93,7 @@ export default function CustomCard({
         withBorder
         radius="md"
         shadow="xl"
+        p={0}
         className={classes.card}
         {...others}
         sx={theme => {
@@ -112,14 +113,7 @@ export default function CustomCard({
           }
         }}
       >
-        <Card.Section
-          sx={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%'
-          }}
-        >
+        <Card.Section>
           <Box
             sx={() => {
               if (image) {

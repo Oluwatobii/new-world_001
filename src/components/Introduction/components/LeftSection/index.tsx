@@ -171,18 +171,12 @@ export default function LeftSection() {
             <Box
               sx={theme => ({
                 position: 'absolute',
-                marginLeft: '0.3%',
                 fontSize: '25px',
                 lineHeight: `${ROLE_LINE_HEIGHT}px`,
                 display: 'inline-flex',
                 alignItems: 'center',
                 whiteSpace: 'nowrap',
-                [theme.fn.smallerThan('xl')]: {
-                  marginLeft: '0%'
-                },
-                [theme.fn.smallerThan('xs')]: {
-                  marginLeft: '2%'
-                }
+                left: 0
               })}
             >
               <Text inherit span sx={{ display: 'inline-block', fontWeight: 700, letterSpacing: '0.02em' }}>
