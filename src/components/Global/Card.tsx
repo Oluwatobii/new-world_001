@@ -1,4 +1,4 @@
-import { Card, Image, Text, createStyles, Box, Title, useMantineColorScheme } from '@mantine/core'
+import { Card, Text, createStyles, Box, Title, useMantineColorScheme } from '@mantine/core'
 
 const useStyles = createStyles(theme => ({
   card: {
@@ -115,6 +115,7 @@ export default function CustomCard({
               if (image) {
                 return {
                   position: 'relative',
+                  width: '100%',
                   '::before': {
                     content: '""',
                     position: 'absolute',
@@ -147,18 +148,16 @@ export default function CustomCard({
               </Text>
             ) : null}
             {image ? (
-              <Image
+              <Box
+                component="img"
                 src={image}
-                height={180}
-                fit="cover"
+                alt={title || 'project image'}
                 sx={{
                   width: '100%',
-                  '& img': {
-                    width: '100%',
-                    height: '180px',
-                    objectFit: 'cover',
-                    objectPosition: 'center'
-                  }
+                  height: '180px',
+                  display: 'block',
+                  objectFit: 'cover',
+                  objectPosition: 'center'
                 }}
               />
             ) : null}
