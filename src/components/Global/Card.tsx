@@ -146,7 +146,22 @@ export default function CustomCard({
                 {title}
               </Text>
             ) : null}
-            {image ? <Image src={image} height={180} /> : null}
+            {image ? (
+              <Image
+                src={image}
+                height={180}
+                fit="cover"
+                sx={{
+                  width: '100%',
+                  '& img': {
+                    width: '100%',
+                    height: '180px',
+                    objectFit: 'cover',
+                    objectPosition: 'center'
+                  }
+                }}
+              />
+            ) : null}
             {Icon ? Icon : null}
           </Box>
 
