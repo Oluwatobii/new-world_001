@@ -8,12 +8,13 @@ const useStyles = createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'stretch',
     transition: 'transform .22s ease, box-shadow .22s ease',
     overflow: 'hidden',
     backfaceVisibility: 'hidden',
     WebkitBackfaceVisibility: 'hidden',
-    transform: 'translateZ(0)'
+    transform: 'translateZ(0)',
+    width: '100%'
   },
 
   imageText: {
@@ -43,7 +44,9 @@ const useStyles = createStyles(theme => ({
     marginBottom: theme.spacing.xs / 2,
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
-    color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark
+    color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
+    width: '100%',
+    minHeight: 56
   },
 
   footer: {
@@ -109,7 +112,14 @@ export default function CustomCard({
           }
         }}
       >
-        <Card.Section>
+        <Card.Section
+          sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%'
+          }}
+        >
           <Box
             sx={() => {
               if (image) {
@@ -183,7 +193,9 @@ export default function CustomCard({
             sx={() => ({
               marginTop: Icon ? '20px' : '0px',
               textAlign: 'left',
-              lineHeight: 1.6
+              lineHeight: 1.6,
+              width: '100%',
+              minHeight: 102
             })}
           >
             {description}
