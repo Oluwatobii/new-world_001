@@ -11,7 +11,7 @@ const useStyles = createStyles(theme => ({
     marginTop: '5rem',
     textAlign: 'center',
     [theme.fn.smallerThan('sm')]: {
-      marginTop: theme.spacing.xl
+      marginTop: 0
     }
   }
 }))
@@ -23,18 +23,18 @@ export default function StatGraph({ subject, stat }: StatProps) {
     <Center
       className={classes.stat}
       sx={theme => ({
-        width: 250,
-        height: 150,
+        width: 225,
+        height: 135,
         borderLeft: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         borderBottom: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         color: theme.colorScheme === 'dark' ? theme.colors.white[0] : theme.colors.dark,
         [theme.fn.smallerThan('sm')]: {
-          width: 148,
-          height: 102
+          width: 132,
+          height: 92
         },
         [theme.fn.smallerThan('xs')]: {
-          width: 128,
-          height: 92
+          width: 116,
+          height: 82
         }
       })}
     >
