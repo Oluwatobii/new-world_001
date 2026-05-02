@@ -168,7 +168,8 @@ export default function CustomCard({
             lineClamp={4}
             sx={() => ({
               marginTop: Icon ? '20px' : '0px',
-              textAlign: 'justify'
+              textAlign: 'left',
+              lineHeight: 1.6
             })}
           >
             {description}

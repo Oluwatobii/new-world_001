@@ -205,10 +205,15 @@ export default function LeftSection() {
         <Text
           className={classes.text}
           size="md"
-          sx={() => ({
+          sx={theme => ({
             marginTop: '30px',
-            textAlign: 'initial',
-            width: '85%'
+            textAlign: 'justify',
+            textJustify: 'inter-word',
+            width: '85%',
+            [theme.fn.smallerThan('sm')]: {
+              textAlign: 'left',
+              width: '100%'
+            }
           })}
         >
           I build reliable web software with an engineer&apos;s habit of mind—from APIs and data layers to interfaces

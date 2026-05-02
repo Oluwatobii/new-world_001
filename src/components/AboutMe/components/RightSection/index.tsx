@@ -37,7 +37,11 @@ const useStyles = createStyles(theme => ({
     marginTop: '20px',
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
-    textAlign: 'initial'
+    textAlign: 'justify',
+    textJustify: 'inter-word',
+    [theme.fn.smallerThan('sm')]: {
+      textAlign: 'left'
+    }
   }
 }))
 
