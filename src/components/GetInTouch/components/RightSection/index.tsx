@@ -27,15 +27,21 @@ const useStyles = createStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     marginTop: '95px',
-    paddingLeft: theme.spacing.lg,
-    paddingRight: theme.spacing.lg
+    width: '100%',
+    maxWidth: '100%',
+    paddingLeft: theme.spacing.sm,
+    paddingRight: theme.spacing.sm,
+    [theme.fn.largerThan('sm')]: {
+      paddingLeft: theme.spacing.md,
+      paddingRight: theme.spacing.md
+    }
   }
 }))
 
 export default function RightSection() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
-  const isTabletSize = useMediaQuery('(max-width: 62em)')
+  const isMobile = useMediaQuery('(max-width: 48em)')
   const isNarrow = useMediaQuery('(max-width: 48em)')
   const fieldSize = isNarrow ? 'md' : 'lg'
 
@@ -88,8 +94,8 @@ export default function RightSection() {
 
   return (
     <form onSubmit={form.onSubmit(values => handleSubmit(values))}>
-      <Container className={classes.wrapper}>
-        {isTabletSize ? (
+      <Container className={classes.wrapper} fluid size="xl">
+        {isMobile ? (
           <Title
             order={1}
             sx={theme => ({
@@ -107,7 +113,7 @@ export default function RightSection() {
             I&apos;d love to hear from you
           </Title>
         ) : null}
-        <SimpleGrid cols={2} mt="xl" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+        <SimpleGrid cols={2} spacing="lg" mt="xl" breakpoints={[{ maxWidth: 'xs', cols: 1, spacing: 'md' }]}>
           <TextInput
             label="First Name"
             placeholder="First name"
@@ -128,7 +134,7 @@ export default function RightSection() {
           />
         </SimpleGrid>
 
-        <SimpleGrid cols={2} mt="xl" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+        <SimpleGrid cols={2} spacing="lg" mt="xl" breakpoints={[{ maxWidth: 'xs', cols: 1, spacing: 'md' }]}>
           <TextInput
             label="Email"
             required
@@ -138,7 +144,6 @@ export default function RightSection() {
             variant="filled"
             {...form.getInputProps('email')}
           />
-
           <TextInput
             label="Subject"
             required

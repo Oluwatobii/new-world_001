@@ -104,8 +104,7 @@ export default function CustomCard({
   const { colorScheme } = useMantineColorScheme()
   const textColor = colorScheme === 'dark' ? 'dark' : 'white.0'
   const isNarrow = useMediaQuery('(max-width: 48em)')
-  const cardHeight =
-    isNarrow && height ? `min(${height}, calc(100vw - 1.5rem))` : height
+  const cardHeight = isNarrow && height ? `min(${height}, calc(100vw - 1.5rem))` : height
 
   return (
     <>
@@ -135,7 +134,7 @@ export default function CustomCard({
       >
         <Card.Section>
           <Box
-            sx={() => {
+            sx={theme => {
               if (image) {
                 return {
                   position: 'relative',
@@ -156,7 +155,13 @@ export default function CustomCard({
               }
               return {
                 marginTop: Icon ? '55px' : '0px',
-                textAlign: 'center'
+                textAlign: 'center',
+                ...(Icon && !image
+                  ? {
+                      [theme.fn.smallerThan('sm')]: { marginTop: '40px' },
+                      [theme.fn.smallerThan('xs')]: { marginTop: '36px' }
+                    }
+                  : {})
               }
             }}
           >
@@ -217,11 +222,11 @@ export default function CustomCard({
               width: '100%',
               minHeight: 102,
               [theme.fn.smallerThan('sm')]: {
-                minHeight: 76,
+                minHeight: Icon && !image ? 64 : 76,
                 fontSize: theme.fontSizes.xs
               },
               [theme.fn.smallerThan('xs')]: {
-                minHeight: 68
+                minHeight: Icon && !image ? 58 : 68
               }
             })}
           >

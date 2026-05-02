@@ -10,7 +10,14 @@ const useStyles = createStyles(theme => ({
     justifyContent: 'center',
     alignContent: 'center',
     [theme.fn.smallerThan('sm')]: {
-      width: '100%'
+      flex: '1 1 calc(50% - 16px)',
+      maxWidth: 'calc(50% - 16px)',
+      minWidth: 0,
+      boxSizing: 'border-box',
+      '&:last-child:nth-child(odd)': {
+        flexBasis: '100%',
+        maxWidth: '100%'
+      }
     }
   }
 }))
@@ -40,16 +47,16 @@ export default function index() {
         alignItems: 'flex-start',
         gap: theme.spacing.xl,
         [theme.fn.smallerThan('sm')]: {
-          flexDirection: 'column',
-          flexWrap: 'nowrap',
-          alignItems: 'stretch',
-          gap: theme.spacing.xl * 2,
+          justifyContent: 'center',
+          gap: theme.spacing.lg,
           paddingTop: theme.spacing.md,
           paddingLeft: theme.spacing.md,
           paddingRight: theme.spacing.md
         },
         [theme.fn.smallerThan('xs')]: {
-          gap: theme.spacing.xl * 2.5
+          gap: theme.spacing.md,
+          paddingLeft: theme.spacing.sm,
+          paddingRight: theme.spacing.sm
         }
       })}
     >

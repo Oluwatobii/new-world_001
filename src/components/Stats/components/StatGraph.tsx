@@ -23,18 +23,18 @@ export default function StatGraph({ subject, stat }: StatProps) {
     <Center
       className={classes.stat}
       sx={theme => ({
-        width: 225,
-        height: 135,
+        width: 248,
+        height: 149,
         borderLeft: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         borderBottom: theme.colorScheme === 'dark' ? '2pt solid white' : '2pt solid grey',
         color: theme.colorScheme === 'dark' ? theme.colors.white[0] : theme.colors.dark,
         [theme.fn.smallerThan('sm')]: {
-          width: 132,
-          height: 92
+          width: 145,
+          height: 101
         },
         [theme.fn.smallerThan('xs')]: {
-          width: 116,
-          height: 82
+          width: 128,
+          height: 90
         }
       })}
     >

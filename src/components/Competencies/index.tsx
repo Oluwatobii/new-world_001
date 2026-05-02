@@ -1,4 +1,5 @@
 import { Container, Text, Title, createStyles, SimpleGrid, useMantineColorScheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import CustomCard from '@/components/Global/Card'
 import { FaPenNib } from 'react-icons/fa'
 import { MdEngineering } from 'react-icons/md'
@@ -51,6 +52,8 @@ const useStyles = createStyles(theme => ({
 export default function index() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
+  const isMobile = useMediaQuery('(max-width: 48em)')
+  const iconPx = isMobile ? 38 : 50
 
   const iconColor = colorScheme === 'dark' ? 'brand.0' : 'brand.1'
 
@@ -95,26 +98,29 @@ export default function index() {
         className={classes.main}
         breakpoints={[
           { maxWidth: 'md', cols: 2, spacing: 'md' },
-          { maxWidth: 'sm', cols: 1, spacing: 'sm' },
-          { maxWidth: 'xs', cols: 1, spacing: 'sm' }
+          { maxWidth: 'sm', cols: 1, spacing: 'xs' },
+          { maxWidth: 'xs', cols: 1, spacing: 'xs' }
         ]}
       >
         <CustomCard
           title="Full-stack development"
           hover={true}
-          Icon={<BsCodeSlash size="50px" color={iconColor} />}
+          height={isMobile ? '300px' : '350px'}
+          Icon={<BsCodeSlash size={iconPx} color={iconColor} />}
           description="End-to-end web development using React, Node.js, PostgreSQL, MongoDB, Ruby on Rails, and related tooling. This portfolio is built with React."
         />
         <CustomCard
           title="Mechanical engineering"
           hover={true}
-          Icon={<MdEngineering size="50px" color={iconColor} />}
+          height={isMobile ? '300px' : '350px'}
+          Icon={<MdEngineering size={iconPx} color={iconColor} />}
           description="Master's degree in Mechanical Engineering (Concordia University). Analysis and CAD—from mechanisms and thermals through detailed part design."
         />
         <CustomCard
           title="CAD & design"
           hover={true}
-          Icon={<FaPenNib size="50px" color={iconColor} />}
+          height={isMobile ? '300px' : '350px'}
+          Icon={<FaPenNib size={iconPx} color={iconColor} />}
           description="2D and 3D CAD from early concepts through documentation—layouts, assemblies, and clear design intent for review or manufacturing."
         />
       </SimpleGrid>
