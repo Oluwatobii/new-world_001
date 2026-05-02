@@ -13,9 +13,15 @@ export default function index() {
         justifyContent: 'space-around'
       }}
     >
-      <div>
+      <Box
+        sx={{
+          flex: '0 1 auto',
+          width: '100%',
+          maxWidth: '38rem'
+        }}
+      >
         <LeftSection />
-      </div>
+      </Box>
       <div>{!isTabletSize ? <RightSection /> : null}</div>
     </Box>
   )

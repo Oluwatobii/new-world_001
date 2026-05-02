@@ -171,6 +171,7 @@ export default function LeftSection() {
     >
       <Box
         sx={theme => ({
+          width: '100%',
           padding: '3.5rem',
           color: theme.colorScheme === 'dark' ? theme.white : theme.black,
           [theme.fn.smallerThan('sm')]: {
@@ -270,7 +271,7 @@ export default function LeftSection() {
             marginTop: theme.spacing.md,
             textAlign: 'justify',
             textJustify: 'inter-word',
-            width: '85%',
+            width: '100%',
             [theme.fn.largerThan('sm')]: {
               marginTop: theme.spacing.lg
             },
