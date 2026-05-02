@@ -73,7 +73,7 @@ export default function index() {
               fontWeight: 700
             })}
           >
-            DOWNLOAD MY RESUME!
+            Download résumé
           </Title>
 
           <Box

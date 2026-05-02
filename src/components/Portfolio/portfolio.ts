@@ -12,7 +12,7 @@ export const portfolioData = {
       color: '#2A9BD4',
       url: 'https://tracker.tbello.dev',
       description:
-        'The Bug/Project Tracker web application helps in visualizing the progress of projects and potential bugs that are related.',
+        'A bug and project tracker that visualizes work in progress, milestones, and related issues in one place.',
       active: true,
       stack: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Express']
     },
@@ -22,7 +22,7 @@ export const portfolioData = {
       image: portfolioOnePath,
       color: '#DD7230',
       url: 'https://upbeat-hawking-a45e1b.netlify.app/',
-      description: 'A React application that allows users to book and cancel interview on selected days of the week.',
+      description: 'A scheduling app for booking and canceling interview slots on selected days, built with React.',
       active: true,
       stack: ['JavaScript', 'React', 'Node.js', 'Ruby', 'PostgreSQL']
     },
@@ -33,7 +33,7 @@ export const portfolioData = {
       color: '#5643FA',
       url: '/',
       description:
-        'The Tutorama App makes it easy for students to instantly connect with expert tutros for in-person lessons.',
+        'Connects students with vetted tutors for in-person lessons, with a smooth booking and matching flow.',
       active: true,
       stack: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS']
     },
@@ -43,8 +43,7 @@ export const portfolioData = {
       image: portfolioThreePath,
       color: '#2C5F2D',
       url: '/',
-      description:
-        'An app that lets you create quizzes and share them between friends. The creator of the quiz can view and share all the results at the end of the quiz.',
+      description: 'Create quizzes, share them with others, and review aggregated results when a session ends.',
       active: true,
       stack: ['JavaScript', 'React', 'Firebase', 'Node.js', 'MongoDB']
     }

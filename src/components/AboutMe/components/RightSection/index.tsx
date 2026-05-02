@@ -62,7 +62,7 @@ export default function RightSection() {
         })}
       >
         <Title className={classes.title} order={1}>
-          Get To Know Me Better
+          About
         </Title>
 
         <Title
@@ -75,7 +75,7 @@ export default function RightSection() {
             marginTop: '35px'
           })}
         >
-          DESIGNING WITH PASSION WHILE EXPLORING THE WORLD.
+          FROM MECHANICAL ENGINEERING TO FULL-STACK DEVELOPMENT.
         </Title>
 
         <Text
@@ -86,9 +86,9 @@ export default function RightSection() {
             width: '95%'
           })}
         >
-          Over the years I’ve been passionate about different things – both professionally and personally. This probably
-          isn't surprising considering my background is primarily in areas of mechanical engineering, but i’ve always
-          had the curious mind of what web development (programming) entails.
+          My foundation is in mechanical engineering—systems thinking, tolerances, and how things fit together under
+          load. That mindset carries into software: clear interfaces between components, maintainable code, and products
+          that hold up in production.
         </Text>
         <Text
           className={classes.text}
@@ -98,7 +98,8 @@ export default function RightSection() {
             width: '95%'
           })}
         >
-          And as a result, i found myself further delving into this new world of programming and software development.
+          I moved deliberately into web development to work across the full stack—from databases and APIs to the
+          experiences users see in the browser.
         </Text>
 
         <Group
@@ -108,7 +109,7 @@ export default function RightSection() {
           })}
         >
           <a href="#contact">
-            <CustomButton text="Want To Know More?" textColor={textColor} />
+            <CustomButton text="Get in touch" textColor={textColor} />
           </a>
         </Group>
       </Box>

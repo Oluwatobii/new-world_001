@@ -31,11 +31,11 @@ export const menuList = {
       links: [
         {
           link: '#about',
-          label: 'About Me'
+          label: 'About'
         },
         {
           link: '#competencies',
-          label: 'Services'
+          label: 'Skills'
         },
         {
           link: '#portfolio',
@@ -58,7 +58,7 @@ export const menuList = {
         },
         {
           link: '#contact',
-          label: 'Contact Me'
+          label: 'Contact'
         }
       ]
     }

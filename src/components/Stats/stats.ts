@@ -2,13 +2,13 @@ export const statData = {
   data: [
     {
       id: '1',
-      subject: 'Awesome Projects',
+      subject: 'Sample projects',
       stat: '5+',
       active: true
     },
     {
       id: '2',
-      subject: 'Years Experiences',
+      subject: 'Years of experience',
       stat: '2+',
       active: true
     },

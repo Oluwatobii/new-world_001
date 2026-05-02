@@ -67,7 +67,7 @@ export default function index() {
         WHAT I DO
       </Text>
       <Title align="center" className={classes.title}>
-        Top Services
+        Skills & background
       </Title>
 
       <SimpleGrid
@@ -81,22 +81,22 @@ export default function index() {
         ]}
       >
         <CustomCard
-          title="Full Stack Developer"
+          title="Full-stack development"
           hover={true}
           Icon={<BsCodeSlash size="50px" color={iconColor} />}
-          description="I develop for the web, working with various stack technologies such as; React, Node, MongoDB, PostgreSQL, Ruby on Rails, and more. This site is built with React!"
+          description="End-to-end web development using React, Node.js, PostgreSQL, MongoDB, Ruby on Rails, and related tooling. This portfolio is built with React."
         />
         <CustomCard
-          title="Mechanical Engineer"
+          title="Mechanical engineering"
           hover={true}
           Icon={<MdEngineering size="50px" color={iconColor} />}
-          description="Master's in Mechanical Engineering from Concordia University. Designing that internal combustion engine won't be a problem."
+          description="Master's degree in Mechanical Engineering (Concordia University). Analysis and CAD—from mechanisms and thermals through detailed part design."
         />
         <CustomCard
-          title="2D/3D Designer"
+          title="CAD & design"
           hover={true}
           Icon={<FaPenNib size="50px" color={iconColor} />}
-          description="I draw cool 2D/3D CAD designs. Should you want to join the Avengers and be the new iron-man, I'll help you with designing the Iron Man suit."
+          description="2D and 3D CAD from early concepts through documentation—layouts, assemblies, and clear design intent for review or manufacturing."
         />
       </SimpleGrid>
     </Container>

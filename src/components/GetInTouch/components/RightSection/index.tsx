@@ -98,7 +98,7 @@ export default function RightSection() {
               }
             })}
           >
-            Stay Connected & Let's Get In Touch
+            I&apos;d love to hear from you
           </Title>
         ) : null}
         <SimpleGrid cols={2} mt="xl" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>

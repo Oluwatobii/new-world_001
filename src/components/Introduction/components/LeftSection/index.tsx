@@ -120,7 +120,7 @@ export default function LeftSection() {
             }
           })}
         >
-          HELLO I'M
+          HELLO, I&apos;M
         </Text>
         <div className={classes.bannerText}>
           <Title className={classes.name} order={1}>
@@ -142,13 +142,13 @@ export default function LeftSection() {
                 }
               })}
             >
-              WEB DEVELOPER.
+              FULL-STACK DEVELOPER.
               <br />
-              MECH. ENGR.
+              MECHANICAL ENGINEER.
               <br />
-              MAN UNITED FAN.
+              SPORTS ENTHUSIAST.
               <br />
-              CAR ENTHUSIAST.
+              AUTOMOTIVE ENTHUSIAST.
             </Box>
           </div>
         </div>
@@ -161,8 +161,8 @@ export default function LeftSection() {
             width: '85%'
           })}
         >
-          Excellent at working well with others while holding myself accountable and navigating the dynamics of the
-          toughest teams.
+          I build reliable web software with an engineer&apos;s habit of mind—from APIs and data layers to interfaces
+          people actually use. Collaborative, thorough, and mindful of maintainability.
         </Text>
         <Group
           sx={() => ({
@@ -171,10 +171,10 @@ export default function LeftSection() {
           })}
         >
           <a href="#stats">
-            <CustomButton text="Come On In" buttonColor={buttonColor} textColor={textColor} />
+            <CustomButton text="View highlights" buttonColor={buttonColor} textColor={textColor} />
           </a>
           <a href="#about">
-            <CustomButton text="About Me" textColor={textColor} />
+            <CustomButton text="About" textColor={textColor} />
           </a>
         </Group>
       </Box>

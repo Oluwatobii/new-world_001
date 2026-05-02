@@ -138,7 +138,7 @@ export default function Footer() {
           <Logo />
 
           <Text size="xs" color="dimmed" className={classes.description}>
-            Built by{' '}
+            Site by{' '}
             <a
               href="https://github.com/Oluwatobii"
               className={classes.descriptionText}
@@ -146,27 +146,27 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               Oluwatobi A. Bello
-            </a>{' '}
-            for his portfolio website. You are not allowed to use this webpage for either personal or commercial use.
-            View the source code for this website{' '}
+            </a>
+            . Content and design are for this portfolio only; please do not reuse this page for other sites or
+            commercial purposes. Source code:{' '}
             <a
               href="https://github.com/Oluwatobii/new-world_001"
               className={classes.descriptionText}
               target="_blank"
               rel="noopener noreferrer"
             >
-              here.
-            </a>{' '}
-            <br />
-            Administrative Fearures? click{' '}
+              GitHub
+            </a>
+            . <br />
+            Portfolio admin (Houston):{' '}
             <a
               href="https://houston.otbi.me"
               className={classes.descriptionText}
               target="_blank"
               rel="noopener noreferrer"
             >
-              here
-            </a>{' '}
+              houston.otbi.me
+            </a>
           </Text>
         </div>
         {!isTabletSize ? (

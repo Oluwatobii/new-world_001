@@ -292,7 +292,7 @@ export default function index() {
   return (
     <Container size="lg">
       <Title align="center" className={classes.title}>
-        Latest Projects
+        Selected work
       </Title>
 
       <div className={classes.carouselWrapper}>

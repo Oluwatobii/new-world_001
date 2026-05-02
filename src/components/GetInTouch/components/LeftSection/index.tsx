@@ -51,7 +51,7 @@ export default function LeftSection() {
           GET IN TOUCH
         </Text>
         <Title className={classes.text} order={1}>
-          Stay Connected & Let's Get In Touch
+          I&apos;d love to hear from you
         </Title>
 
         <SimpleGrid
@@ -61,12 +61,8 @@ export default function LeftSection() {
             textAlign: 'center'
           })}
         >
-          <CustomIcon Icon={<GoLocation size={'45px'} />} title="My Location" text="Ontario, Canada" />
-          <CustomIcon
-            Icon={<AiOutlineMail size={'45px'} />}
-            title="Email Address"
-            text="support@otbi.me"
-          />
+          <CustomIcon Icon={<GoLocation size={'45px'} />} title="Location" text="Ontario, Canada" />
+          <CustomIcon Icon={<AiOutlineMail size={'45px'} />} title="Email Address" text="support@otbi.me" />
           <CustomIcon Icon={<TbWorld size={'45px'} />} title="Website" text="https://tbello.dev" />
           <CustomIcon Icon={<BsTelephone size={'45px'} />} title="Telephone" text="+1 (xxx) xxx-xxxx" />
         </SimpleGrid>
