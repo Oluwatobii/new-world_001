@@ -3,41 +3,33 @@ import CustomButton from '@/components/Global/Button'
 
 const useStyles = createStyles(theme => ({
   title: {
-    display: 'flex',
+    display: 'inline-block',
     position: 'relative',
-    marginBottom: theme.spacing.xs / 2,
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
+    width: 'max-content',
+    maxWidth: '100%',
+    marginLeft: theme.spacing.md,
+    marginBottom: theme.spacing.md,
+    paddingBottom: theme.spacing.xs,
     color: theme.colorScheme === 'dark' ? theme.colors.white : theme.colors.dark,
     [theme.fn.smallerThan('sm')]: {
-      fontSize: theme.fontSizes.xl
+      fontSize: theme.fontSizes.xl,
+      marginLeft: theme.spacing.md
     },
     [theme.fn.smallerThan('xs')]: {
-      fontSize: theme.fontSizes.lg
+      fontSize: theme.fontSizes.lg,
+      marginLeft: theme.spacing.sm
     },
 
     '&::before': {
       content: '""',
       position: 'absolute',
-      width: '40%',
-      height: '4px',
-      borderRadius: '4px',
-      backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941',
+      left: 0,
       bottom: 0,
-      left: 19,
-      [theme.fn.smallerThan('md')]: {
-        left: 20
-      },
-      [theme.fn.smallerThan('sm')]: {
-        left: theme.spacing.md,
-        width: '28%',
-        maxWidth: 120
-      },
-      [theme.fn.smallerThan('xs')]: {
-        left: theme.spacing.sm,
-        width: '24%',
-        maxWidth: 96
-      }
+      width: '100%',
+      height: 3,
+      borderRadius: 2,
+      backgroundColor: theme.colorScheme === 'dark' ? '#39f758' : '#2CA941',
+      pointerEvents: 'none'
     }
   },
 
