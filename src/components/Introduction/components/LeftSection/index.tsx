@@ -1,5 +1,20 @@
 import { createStyles, keyframes, Stack, Title, Text, Box, Group, useMantineColorScheme } from '@mantine/core'
+import { useEffect, useState } from 'react'
 import CustomButton from '@/components/Global/Button'
+
+const ROLE_LINE_HEIGHT = 42
+const ROLE_TITLES = [
+  'SOFTWARE ENGINEER.',
+  'FULL-STACK DEVELOPER.',
+  'MECHANICAL ENGINEER.',
+  'SYSTEMS THINKER.',
+  'AUTOMOTIVE ENTHUSIAST.',
+  'LIFELONG LEARNER.'
+]
+const TYPING_SPEED_MS = 75
+const DELETING_SPEED_MS = 42
+const HOLD_AT_END_MS = 1300
+const HOLD_AT_START_MS = 260
 
 const useStyles = createStyles(theme => ({
   text: {
@@ -45,7 +60,7 @@ const useStyles = createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.colors.brand[0] : theme.colors.brand[1],
     position: 'absolute',
     width: '100%',
-    height: '30px',
+    height: `${ROLE_LINE_HEIGHT}px`,
     overflow: 'hidden',
     top: '115%',
     left: '26.5%',
@@ -58,27 +73,53 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-const slide = keyframes({
-  '0%': {
-    top: 0
+const cursorBlink = keyframes({
+  '0%, 49%': {
+    opacity: 1
   },
-  '25%': {
-    top: '-40px'
-  },
-  '50%': {
-    top: '-80px'
-  },
-  '75%': {
-    top: '-120px'
+  '50%, 100%': {
+    opacity: 0
   }
 })
 
 export default function LeftSection() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineColorScheme()
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [typedRole, setTypedRole] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const buttonColor = colorScheme === 'dark' ? 'brand.0' : 'brand.1'
   const textColor = colorScheme === 'dark' ? 'dark' : 'white.0'
+  const activeRole = ROLE_TITLES[roleIndex]
+
+  useEffect(() => {
+    let nextDelay = isDeleting ? DELETING_SPEED_MS : TYPING_SPEED_MS
+
+    if (!isDeleting && typedRole === activeRole) {
+      nextDelay = HOLD_AT_END_MS
+    } else if (isDeleting && typedRole.length === 0) {
+      nextDelay = HOLD_AT_START_MS
+    }
+
+    const timer = window.setTimeout(() => {
+      if (!isDeleting && typedRole === activeRole) {
+        setIsDeleting(true)
+        return
+      }
+
+      if (isDeleting && typedRole.length === 0) {
+        setIsDeleting(false)
+        setRoleIndex(prev => (prev + 1) % ROLE_TITLES.length)
+        return
+      }
+
+      const nextLength = typedRole.length + (isDeleting ? -1 : 1)
+      setTypedRole(activeRole.slice(0, Math.max(0, nextLength)))
+    }, nextDelay)
+
+    return () => window.clearTimeout(timer)
+  }, [activeRole, isDeleting, typedRole])
 
   return (
     <Stack
@@ -130,10 +171,12 @@ export default function LeftSection() {
             <Box
               sx={theme => ({
                 position: 'absolute',
-                top: 0,
                 marginLeft: '0.3%',
                 fontSize: '25px',
-                animation: `${slide} 9s infinite`,
+                lineHeight: `${ROLE_LINE_HEIGHT}px`,
+                display: 'inline-flex',
+                alignItems: 'center',
+                whiteSpace: 'nowrap',
                 [theme.fn.smallerThan('xl')]: {
                   marginLeft: '0%'
                 },
@@ -142,13 +185,20 @@ export default function LeftSection() {
                 }
               })}
             >
-              FULL-STACK DEVELOPER.
-              <br />
-              MECHANICAL ENGINEER.
-              <br />
-              SPORTS ENTHUSIAST.
-              <br />
-              AUTOMOTIVE ENTHUSIAST.
+              <Text inherit span sx={{ display: 'inline-block', fontWeight: 700, letterSpacing: '0.02em' }}>
+                {typedRole}
+              </Text>
+              <Text
+                inherit
+                span
+                sx={{
+                  display: 'inline-block',
+                  marginLeft: '2px',
+                  animation: `${cursorBlink} 0.95s steps(1, end) infinite`
+                }}
+              >
+                |
+              </Text>
             </Box>
           </div>
         </div>
